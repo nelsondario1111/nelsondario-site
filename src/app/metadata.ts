@@ -1,7 +1,7 @@
-// app/metadata.ts
-import type { Metadata } from "next"
+// src/app/metadata.ts
+import type { Metadata } from "next";
 
-const baseUrl = "https://www.nelsondario.com"
+const baseUrl = "https://www.nelsondario.com";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +30,6 @@ export const metadata: Metadata = {
   publisher: "Nelson Dario",
   category: "Spirituality & Design",
 
-  // 🌐 Alternate languages
   alternates: {
     canonical: baseUrl,
     languages: {
@@ -39,22 +38,17 @@ export const metadata: Metadata = {
     },
   },
 
-  // 🌓 Browser / theme configuration
   themeColor: "#000000",
-  viewport:
-    "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
 
-  // 🤖 Robots & sitemap
+  // ✅ Next.js expects viewport in a separate export in newer versions (see note below)
+  // Keeping it here may still work depending on your Next version, but safer to move.
+  // viewport: "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
+
   robots: {
     index: true,
     follow: true,
   },
-  other: {
-    sitemap: `${baseUrl}/sitemap.xml`,
-    robots: `${baseUrl}/robots.txt`,
-  },
 
-  // 🔮 Open Graph & Twitter preview
   openGraph: {
     title: "Nelson Dario | Design · Coaching · Awakening",
     description:
@@ -73,6 +67,7 @@ export const metadata: Metadata = {
     alternateLocale: ["es_EC", "es_ES"],
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "Nelson Dario | Design · Coaching · Awakening",
@@ -82,23 +77,24 @@ export const metadata: Metadata = {
     creator: "@nelsondario",
   },
 
-  // 📱 App capabilities
   manifest: "/manifest.webmanifest",
+
   appLinks: {
     web: { url: baseUrl, should_fallback: true },
   },
 
-  // 🔏 Privacy & referrer policy
   referrer: "strict-origin-when-cross-origin",
 
-  // 🖼 Icons
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 
-  // 🧠 Structured data (schema.org)
+  // ✅ MERGED: all custom meta goes in ONE `other`
   other: {
+    sitemap: `${baseUrl}/sitemap.xml`,
+    robots: `${baseUrl}/robots.txt`,
+
     "application/ld+json": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -112,9 +108,9 @@ export const metadata: Metadata = {
       description:
         "Nelson Dario blends web design, human design, and metaphysics to awaken consciousness.",
     }),
-    // energetic signature ✧
+
     vibration: "Love · Truth · Sovereignty · LightChain",
   },
-}
+};
 
-export default metadata
+export default metadata;
