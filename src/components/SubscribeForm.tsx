@@ -2,49 +2,103 @@
 
 import { useState } from "react";
 
-export function SubscribeForm() {
+type SubscribeFormProps = {
+  label?: string;
+  placeholder?: string;
+  buttonText?: string;
+  className?: string;
+};
+
+export function SubscribeForm({
+  label = "Subscribe",
+  placeholder = "Your email",
+  buttonText = "Join",
+  className = "",
+}: SubscribeFormProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState<string>("");
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setMessage("");
+
+    const trimmed = email.trim();
+    if (!trimmed) {
+      setStatus("error");
+      setMessage("Please enter an email.");
+      return;
+    }
+
     setStatus("loading");
+
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
-        body: JSON.stringify({ email }),
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
       });
-      if (res.ok) setStatus("success");
-      else throw new Error("Error subscribing");
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data?.error || "Subscription failed. Try again.");
+        return;
+      }
+
+      setStatus("success");
+      setMessage("You’re in. Welcome ✧");
+      setEmail("");
     } catch {
       setStatus("error");
+      setMessage("Network error. Try again.");
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
-      <input
-        type="email"
-        value={email}
-        required
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your email"
-        className="px-4 py-2 rounded-md bg-transparent border border-gold text-softwhite w-72 text-center"
-      />
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="px-6 py-2 bg-gold text-midnight font-semibold rounded-md hover:bg-transparent hover:text-gold border border-gold transition-all"
-      >
-        {status === "loading" ? "Sending..." : "Subscribe"}
-      </button>
-      {status === "success" && (
-        <p className="text-gold text-sm">✨ You’re subscribed. Welcome!</p>
-      )}
-      {status === "error" && (
-        <p className="text-red-400 text-sm">Something went wrong. Try again.</p>
-      )}
+    <form onSubmit={onSubmit} className={className} aria-label={label}>
+      <div className="text-sm font-medium text-[var(--text-base)]/90 mb-2">{label}</div>
+
+      <div className="flex items-center gap-2">
+        <input
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={placeholder}
+          aria-label={placeholder}
+          className="w-full rounded-xl border border-black/10 bg-white/70 px-4 py-2 text-sm
+                     shadow-sm backdrop-blur outline-none
+                     focus:border-[color-mix(in_srgb,var(--color-gold)_50%,transparent)]
+                     focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-gold)_35%,transparent)]
+                     dark:border-white/15 dark:bg-black/40 dark:text-white"
+        />
+
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="rounded-xl px-4 py-2 text-sm font-semibold
+                     bg-[var(--color-gold)] text-[var(--color-midnight)]
+                     hover:opacity-95 active:scale-[0.98]
+                     transition disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {status === "loading" ? "..." : buttonText}
+        </button>
+      </div>
+
+      {message ? (
+        <p
+          className={`mt-2 text-xs ${
+            status === "success" ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400"
+          }`}
+        >
+          {message}
+        </p>
+      ) : null}
     </form>
   );
 }
+
+export default SubscribeForm;
