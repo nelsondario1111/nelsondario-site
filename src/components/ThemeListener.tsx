@@ -28,28 +28,25 @@ export function ThemeListener() {
     };
 
     // Initial apply
-    const stored = getStored();
-    apply(stored ?? getSystem());
+    apply(getStored() ?? getSystem());
 
-    // Listen to system changes only if user didn't explicitly set a theme
     const mql = window.matchMedia?.("(prefers-color-scheme: dark)");
     if (!mql) return;
 
     const onChange = () => {
-      const storedNow = getStored();
-      if (!storedNow) apply(getSystem());
+      // Only follow system theme if user hasn't explicitly set one
+      if (!getStored()) apply(getSystem());
     };
 
-    // Safari compatibility
     if (typeof mql.addEventListener === "function") {
       mql.addEventListener("change", onChange);
       return () => mql.removeEventListener("change", onChange);
-    } else {
-      // @ts-expect-error older Safari
-      mql.addListener(onChange);
-      // @ts-expect-error older Safari
-      return () => mql.removeListener(onChange);
     }
+
+    // Legacy Safari fallback
+    const legacyMql = mql as any;
+    legacyMql.addListener?.(onChange);
+    return () => legacyMql.removeListener?.(onChange);
   }, []);
 
   return null;
