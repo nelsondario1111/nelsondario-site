@@ -1,4 +1,4 @@
-// app/layout.tsx
+// src/app/layout.tsx
 
 /* ───────────────────────────────
    ✦ Nelson Dario Root Layout ✦
@@ -31,7 +31,9 @@ const playfair = Playfair_Display({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
   viewportFit: "cover",
+  themeColor: "#0a0a0f", // ✅ moved here (correct for Next 16)
 };
 
 /* ✦ Metadata (can be adjusted or extended later) */
@@ -40,7 +42,10 @@ export const metadata: Metadata = {
   description:
     "Uniting consciousness, creativity, and technology — design for the awakening age.",
   metadataBase: new URL("https://nelsondario.com"),
-  themeColor: "#0a0a0f",
+
+  // ❌ REMOVE themeColor from metadata (Next 16 warning)
+  // themeColor: "#0a0a0f",
+
   openGraph: {
     title: "Nelson Dario · Design | Coaching | Awakening",
     description:
@@ -51,26 +56,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nelson Dario",
-    description:
-      "Truth · Beauty · Sovereignty · The fusion of light and design.",
+    description: "Truth · Beauty · Sovereignty · The fusion of light and design.",
   },
   icons: {
     icon: "/favicon-dark.ico",
   },
   other: {
-    "frequency-signature":
-      "Truth · Beauty · Sovereignty · 432 Hz / 528 Hz",
+    "frequency-signature": "Truth · Beauty · Sovereignty · 432 Hz / 528 Hz",
   },
 };
 
 /* Optional: if you still need a separate export somewhere else */
 export const metadataConfig: Metadata = metadata;
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark" data-theme="dark">
       <body
@@ -80,9 +79,6 @@ export default function RootLayout({
           overflow-x-hidden selection:bg-[var(--color-gold)] selection:text-[var(--color-midnight)]
           transition-colors duration-700 ease-in-out`}
       >
-        {/* ClientRootShell renders global nav + footer.
-            On /en/luma-portal, body.luma-portal-mode will hide them
-            via CSS so the LUMA Portal can use its own chrome. */}
         <ClientRootShell>{children}</ClientRootShell>
       </body>
     </html>
