@@ -38,12 +38,6 @@ export const metadata: Metadata = {
     },
   },
 
-  themeColor: "#000000",
-
-  // ✅ Next.js expects viewport in a separate export in newer versions (see note below)
-  // Keeping it here may still work depending on your Next version, but safer to move.
-  // viewport: "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover",
-
   robots: {
     index: true,
     follow: true,
@@ -90,7 +84,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  // ✅ MERGED: all custom meta goes in ONE `other`
+  // ✅ All custom meta goes in ONE `other`
   other: {
     sitemap: `${baseUrl}/sitemap.xml`,
     robots: `${baseUrl}/robots.txt`,
