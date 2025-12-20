@@ -1,0 +1,636 @@
+/* ───────────────────────────────
+   ✦ NelsonDario.com Global Styles ✦
+   Frequency: Truth · Beauty · Sovereignty
+   Designed for solar clarity and lunar depth
+   ─────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✦ FREQUENCY SIGNATURE ✦
+   Solar: 432 Hz — coherence · heart alignment
+   Lunar: 528 Hz — restoration · divine memory
+   The stylesheet breathes with this polarity.
+*/
+
+/* ───────────────────────────────
+   1. Base & Polarity Variables
+   ─────────────────────────────── */
+:root {
+  /* Core palette */
+  --color-gold: #e2a93f;
+  --color-gold-strong: #c9903b;
+  --color-midnight: #0a0a0f;
+  --color-softwhite: #fffaf1;
+  --gold-rgb: 226, 169, 63;
+
+  /* Backgrounds */
+  --bg-base: #f9f6ef;
+  --bg-primary: var(--bg-base);
+  --bg-secondary: #fffaf3;
+  --card-bg: var(--bg-secondary);
+
+  /* Text */
+  --text-base: #0a0a0a;
+  --text-muted: rgba(10, 10, 10, 0.75);
+  --text-soft: rgba(10, 10, 10, 0.55);
+  --link-hover: #b9771a;
+
+  /* Glow system (gold-based) */
+  --glow-color: rgba(var(--gold-rgb), 0.28);
+  --glow-soft: rgba(var(--gold-rgb), 0.14);
+  --accent-glow: 0 0 18px rgba(var(--gold-rgb), 0.32);
+  --shimmer-color: rgba(255, 210, 120, 0.38);
+  --focus-ring: 0 0 0 3px rgba(var(--gold-rgb), 0.55);
+
+  /* Motion */
+  --gradient-shift: linear-gradient(180deg, #fffaf4 0%, #f9f6ef 40%, #f3eee4 100%);
+  --animation-duration: 12s;
+  --anim-speed: 1s;
+  --anim-linger: 1.5s;
+  --frequency: 432hz;
+
+  /* Design system tokens (cohesion) */
+  --radius-lg: 2rem;       /* navbar curve */
+  --radius-md: 0.75rem;    /* buttons / inputs */
+  --radius-xl: 1.25rem;    /* cards */
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+
+  /* Gold hierarchy */
+  --gold-primary: var(--color-gold);
+  --gold-secondary: color-mix(in srgb, var(--color-gold) 82%, #ffffff 18%);
+  --gold-outline: rgba(var(--gold-rgb), 0.28);
+
+  /* Light-mode navbar */
+  --navbar-bg: linear-gradient(
+    180deg,
+    rgba(242, 184, 101, 0.10) 0%,
+    rgba(255, 250, 241, 0.65) 55%,
+    rgba(255, 250, 241, 0) 100%
+  );
+  --navbar-shadow: 0 4px 20px rgba(242, 184, 101, 0.15);
+  --navbar-reflection: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  /* ✦ LUMA Signature Palette ✦ */
+  --luma-gold: #f1c96a;
+  --luma-bg: #0b0f1a;
+  --luma-pearl: #f9f7f3;
+  --luma-ink: #111111;
+}
+
+.dark {
+  /* Core palette */
+  --color-gold: #ffcb70;
+  --color-gold-strong: #ffd88b;
+  --color-midnight: #050816;
+  --color-softwhite: #f5f5f5;
+  --gold-rgb: 255, 203, 112;
+
+  /* Backgrounds */
+  --bg-base: #050816;
+  --bg-secondary: #0b1020;
+  --card-bg: var(--bg-secondary);
+
+  /* Text */
+  --text-base: #f5f5f5;
+  --text-muted: rgba(255, 250, 241, 0.86);
+  --text-soft: rgba(255, 250, 241, 0.62);
+  --link-hover: #ffe5a7;
+
+  /* Glow system (keep gold-based for coherence) */
+  --glow-color: rgba(var(--gold-rgb), 0.22);
+  --glow-soft: rgba(var(--gold-rgb), 0.12);
+  --accent-glow: 0 0 25px rgba(var(--gold-rgb), 0.22);
+  --shimmer-color: rgba(var(--gold-rgb), 0.22);
+  --focus-ring: 0 0 0 3px rgba(var(--gold-rgb), 0.38);
+
+  /* Motion */
+  --gradient-shift: linear-gradient(180deg, #050816 0%, #0b1120 45%, #020617 100%);
+  --frequency: 528hz;
+
+  /* Gold hierarchy */
+  --gold-secondary: rgba(var(--gold-rgb), 0.92);
+  --gold-outline: rgba(var(--gold-rgb), 0.22);
+
+  /* Navbar */
+  --navbar-bg: linear-gradient(
+    180deg,
+    rgba(5, 8, 22, 0.96) 0%,
+    rgba(5, 8, 22, 0.88) 80%,
+    transparent 100%
+  );
+  --navbar-shadow: 0 4px 25px rgba(var(--gold-rgb), 0.12);
+  --navbar-reflection: none;
+}
+
+/* NOTE:
+   Removed the old “Mobile sunlight tone” override that changed gold on mobile.
+   Gold should not shift by viewport; keep brand consistent across devices.
+*/
+
+/* ───────────────────────────────
+   2. Background & Ambient Layers
+   ─────────────────────────────── */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--gradient-shift);
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -5;
+  background-size: 200% 200%;
+  animation: shimmerFlow var(--animation-duration) ease-in-out infinite;
+  transition: background 1.2s ease, opacity 0.8s ease;
+  will-change: opacity, background-position;
+}
+.dark html::after {
+  opacity: 0.08;
+}
+
+@media (max-width: 768px) {
+  html::after {
+    background: linear-gradient(180deg, #fffaf4 0%, #f9f6ef 60%, #f3eee4 100%);
+  }
+  .dark html::after {
+    background: linear-gradient(180deg, #050816 0%, #0b1120 100%);
+  }
+}
+
+/* ───────────────────────────────
+   3. Base Resets & Body Styling
+   ─────────────────────────────── */
+@layer base {
+  html {
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html,
+  body {
+    @apply m-0 p-0 font-sans antialiased;
+    scroll-behavior: smooth;
+    min-height: 100%;
+    background-color: var(--bg-base);
+    color: var(--text-base);
+  }
+
+  * {
+    @apply border-0 outline-none box-border;
+  }
+
+  a {
+    @apply transition-colors duration-200 ease-in-out;
+    color: var(--gold-primary);
+    position: relative;
+  }
+  a:hover {
+    color: var(--link-hover);
+    text-shadow: 0 0 6px rgba(var(--gold-rgb), 0.35);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading leading-tight tracking-tight;
+    color: var(--gold-primary);
+    text-shadow: 0 0 4px var(--glow-soft);
+  }
+
+  /* IMPORTANT COHESION FIX:
+     Do NOT globally force button padding/border/fill behavior.
+     Components (.btn-primary, .btn-outline, nav buttons) should own intent. */
+  button {
+    @apply transition-colors duration-200 ease-out;
+  }
+
+  ::selection {
+    background: var(--gold-primary);
+    color: var(--color-midnight);
+  }
+
+  html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(var(--gold-rgb), 0.14),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  /* hard override — no body fade-out/fade-in */
+  body {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(var(--gold-rgb), 0.75);
+    outline-offset: 3px;
+    box-shadow: var(--focus-ring);
+  }
+}
+
+/* ───────────────────────────────
+   4. Typography & Layout
+   ─────────────────────────────── */
+@layer base {
+  h1 {
+    @apply text-4xl md:text-6xl font-bold mb-4;
+  }
+  h2 {
+    @apply text-3xl md:text-5xl font-semibold mb-3;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold mb-2;
+  }
+  p {
+    @apply text-base md:text-lg leading-relaxed mb-4;
+    color: var(--text-muted);
+  }
+  section {
+    @apply py-16 md:py-24;
+  }
+  h1.hero {
+    text-shadow: 0 0 25px rgba(var(--gold-rgb), 0.28);
+  }
+}
+
+/* ───────────────────────────────
+   5. Components & Effects
+   ─────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply font-semibold px-6 py-2 transition-all duration-300;
+    border-radius: var(--radius-md);
+    background-color: var(--gold-primary);
+    color: var(--color-midnight);
+    box-shadow: 0 3px 10px rgba(var(--gold-rgb), 0.30);
+    border: var(--stroke-1) solid rgba(var(--gold-rgb), 0.25);
+  }
+  .btn-primary:hover {
+    animation: depthPulse 2s ease-in-out infinite alternate;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2 transition-all duration-300;
+    border-radius: var(--radius-md);
+    border: var(--stroke-1) solid rgba(var(--gold-rgb), 0.40);
+    color: var(--gold-secondary);
+    background: transparent;
+  }
+  .btn-outline:hover {
+    background-color: rgba(var(--gold-rgb), 0.12);
+    border-color: rgba(var(--gold-rgb), 0.70);
+    color: var(--gold-primary);
+    box-shadow: 0 0 18px rgba(var(--gold-rgb), 0.18);
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading mb-6 text-center;
+    color: var(--gold-primary);
+  }
+
+  .card {
+    @apply p-6 transition-transform duration-300;
+    border-radius: var(--radius-xl);
+    background-color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 12px rgba(var(--gold-rgb), 0.14);
+  }
+  .card:hover {
+    animation: depthPulse 2s ease-in-out infinite alternate;
+  }
+
+  .nav-surface {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+  }
+  .dark .nav-surface {
+    background: rgba(10, 10, 15, 0.6);
+  }
+}
+
+/* ───────────────────────────────
+   6. Animations & Utilities
+   ─────────────────────────────── */
+@layer utilities {
+  /* ✦ Navbar ✦ */
+  .navbar {
+    position: relative;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    transition: box-shadow 0.6s ease, transform 0.4s ease;
+  }
+
+  .navbar:hover {
+    box-shadow:
+      0 10px 30px rgba(var(--gold-rgb), 0.18),
+      var(--navbar-shadow),
+      var(--navbar-reflection);
+    transform: translateY(0);
+  }
+
+  .dark .navbar:hover {
+    box-shadow:
+      0 10px 32px rgba(var(--gold-rgb), 0.22),
+      var(--navbar-shadow);
+  }
+
+  /* ✦ Gold Shimmer Overlay — ultra subtle ✦ */
+  @keyframes goldShimmer {
+    0% {
+      background-position: -30% 0;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.1;
+    }
+    70% {
+      opacity: 0.05;
+    }
+    100% {
+      background-position: 130% 0;
+      opacity: 0;
+    }
+  }
+
+  .nav-shimmer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--gold-rgb), 0.16),
+      transparent
+    );
+    background-size: 200% 100%;
+    opacity: 0.07;
+    animation: goldShimmer 26s ease-in-out infinite;
+    will-change: opacity, background-position;
+  }
+
+  .dark .nav-shimmer {
+    opacity: 0.09;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--gold-rgb), 0.12),
+      transparent
+    );
+  }
+
+  .navbar:hover .nav-shimmer {
+    opacity: 0.12;
+  }
+
+  @keyframes pulseSoft {
+    0%,
+    100% {
+      box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.18);
+    }
+    50% {
+      box-shadow: 0 0 22px rgba(var(--gold-rgb), 0.32);
+    }
+  }
+
+  /* Keep focus calm globally; only primary CTA pulses if you want */
+  button:focus-visible {
+    animation: none;
+  }
+  .btn-primary:focus-visible {
+    animation: pulseSoft 1.8s ease-in-out infinite;
+  }
+
+  @keyframes navBloom {
+    0% {
+      box-shadow: 0 0 0 rgba(var(--gold-rgb), 0);
+    }
+    30% {
+      box-shadow: 0 0 25px rgba(var(--gold-rgb), 0.22);
+    }
+    100% {
+      box-shadow: 0 0 0 rgba(var(--gold-rgb), 0);
+    }
+  }
+  .nav-visible {
+    animation: navBloom 1.2s ease-in-out;
+  }
+
+  /* ✦ Auric Reflection Band ✦ */
+  .navbar::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--gold-rgb), 0.12) 0%,
+      rgba(var(--gold-rgb), 0.04) 60%,
+      transparent 100%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+  }
+  .dark .navbar::before {
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  @keyframes goldBreath {
+    0%,
+    100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.06);
+    }
+  }
+  .navbar.luma-mode {
+    animation: goldBreath 18s ease-in-out infinite;
+  }
+
+  /* ✦ Scrollbar Styling ✦ */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-gold), var(--color-gold-strong));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f0b44f, #d29b42);
+  }
+
+  /* ✦ Global shimmer for html::after ✦ */
+  @keyframes shimmerFlow {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  /* ✦ Depth pulse for cards / buttons ✦ */
+  @keyframes depthPulse {
+    0%,
+    100% {
+      transform: translateY(0);
+      box-shadow: 0 4px 14px rgba(var(--gold-rgb), 0.18);
+    }
+    50% {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(var(--gold-rgb), 0.28);
+    }
+  }
+
+  /* ✦ Page fade-in (softened – no full blackout) ✦ */
+  @keyframes pageFade {
+    0% {
+      opacity: 0.96;
+      transform: translateY(2px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .page-fade {
+    animation: pageFade 0.55s ease-out;
+  }
+
+  /* ✦ Pulse glow for primary CTAs ✦ */
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 rgba(var(--gold-rgb), 0);
+    }
+    50% {
+      box-shadow: 0 0 18px rgba(var(--gold-rgb), 0.55);
+    }
+  }
+  .animate-pulseGlow {
+    animation: pulseGlow 2.4s ease-in-out infinite;
+  }
+
+  /* ───────────────────────────────
+     ✦ LUMA Portal: Theme Context
+     ─────────────────────────────── */
+  .luma-page {
+    --bg-base: var(--luma-bg);
+    --bg-primary: var(--luma-bg);
+    --bg-secondary: #111018;
+    --card-bg: #111018;
+
+    --text-base: var(--luma-pearl);
+    --text-muted: rgba(249, 247, 243, 0.88);
+    --text-soft: rgba(249, 247, 243, 0.6);
+    --link-hover: var(--luma-gold);
+
+    --color-gold: var(--luma-gold);
+    --color-gold-strong: #f6d07a;
+    --gold-rgb: 241, 201, 106;
+
+    --glow-color: rgba(241, 201, 106, 0.28);
+    --glow-soft: rgba(241, 201, 106, 0.14);
+    --accent-glow: 0 0 22px rgba(241, 201, 106, 0.28);
+
+    --gold-primary: var(--luma-gold);
+    --gold-secondary: color-mix(in srgb, var(--luma-gold) 82%, #ffffff 18%);
+    --gold-outline: rgba(241, 201, 106, 0.24);
+  }
+
+  /* ✦ Home hero background — soft solar well ✦ */
+  .nd-home-hero {
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(var(--gold-rgb), 0.2) 0%,
+        rgba(15, 23, 42, 0.65) 40%,
+        rgba(2, 6, 23, 1) 100%
+      );
+  }
+
+  /* ✦ Home cosmic grid overlay ✦ */
+  .nd-home-grid {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nd-home-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: soft-light;
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .dark .nd-home-grid::before {
+    opacity: 0.26;
+  }
+}
+
+/* ───────────────────────────────
+   7. LUMA Portal chrome override
+   Hide global NelsonDario nav/footer inside the portal
+   ─────────────────────────────── */
+body.luma-portal-mode .site-nav,
+body.luma-portal-mode .site-footer {
+  display: none !important;
+}
+
+/* ───────────────────────────────
+   8. Accessibility & Print
+   ─────────────────────────────── */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #faf8f2;
+    color: #111;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+}
+
+/* ✦ DESIGN INTENTION ✦
+   Gold = life force · clarity in expression
+   Midnight = mystery · reflection in stillness
+   Softwhite = purity of awareness
+   Each tone is a dialogue between Sun and Moon.
+   LUMA = the experiment of love as currency.
+   — Nelson & Lumina
+*/
