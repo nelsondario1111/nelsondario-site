@@ -81,7 +81,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
               aria-label="Home"
             >
               <div className="relative w-11 h-11 md:w-12 md:h-12 rounded-full border border-[var(--color-gold)]/20 overflow-hidden bg-black/40 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]">
-                <Image src="/images/logo.png" alt="" fill className="object-contain p-1" priority />
+                <Image src="/images/logo.png" alt="" fill className="object-contain p-0" priority />
               </div>
 
               <div className={`leading-tight ${variantClasses[variant]}`}>
@@ -188,7 +188,7 @@ function LumaPortal({ link }: { link: NavLinkItem }) {
       <motion.img
         src="/symbols/luma-sigil.svg"
         alt="LUMA"
-        className="w-7 h-7 z-10"
+        className="w-7 h-7 z-11"
         animate={{ opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
