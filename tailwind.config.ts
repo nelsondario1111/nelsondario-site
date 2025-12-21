@@ -4,6 +4,7 @@ import type { Config } from "tailwindcss"
  * ✦ NelsonDario.com Core Theme
  * Unified design system for Nelson Dario, Lumina & LUMA projects
  * Frequency: Truth · Beauty · Sovereignty
+ * GOLD: Single Source of Truth = #E2A93F (via CSS vars)
  */
 
 const config: Config = {
@@ -49,18 +50,40 @@ const config: Config = {
     },
 
     extend: {
-      /* ✦ Color System — now RGBA-based for opacity support */
+      /**
+       * ✦ Color System
+       * Single-gold is controlled by CSS variables in globals.css:
+       *   --color-gold: #E2A93F
+       *   --gold-rgb: 226, 169, 63
+       *
+       * Tailwind colors reference vars so nothing drifts.
+       */
       colors: {
-        gold: "rgb(242 184 101 / <alpha-value>)",
+        gold: "rgb(var(--gold-rgb) / <alpha-value>)",
         midnight: "rgb(10 10 15 / <alpha-value>)",
         softwhite: "rgb(245 245 245 / <alpha-value>)",
+
+        /* App tokens from globals */
         base: "var(--bg-base)",
+        card: "var(--card-bg)",
         text: "var(--text-base)",
+        muted: "var(--text-muted)",
+
+        /**
+         * Brand hierarchy — SAME GOLD, different intensity.
+         * Use these when you want “light / DEFAULT / strong” behavior
+         * without introducing a new hue.
+         */
         brand: {
-          light: "rgb(248 229 181 / <alpha-value>)",
-          DEFAULT: "rgb(242 184 101 / <alpha-value>)",
-          dark: "rgb(199 151 74 / <alpha-value>)",
+          light: "rgb(var(--gold-rgb) / 0.65)",
+          DEFAULT: "rgb(var(--gold-rgb) / <alpha-value>)",
+          strong: "rgb(var(--gold-rgb) / 0.95)",
         },
+
+        /**
+         * Surfaces (these are neutral foundations)
+         * Keep these stable and let globals.css manage bg/text in dark mode.
+         */
         surface: {
           light: "rgb(26 26 34 / <alpha-value>)",
           DEFAULT: "rgb(10 10 15 / <alpha-value>)",
@@ -90,15 +113,20 @@ const config: Config = {
         section: "6rem",
       },
 
-      /* ✦ Shadows & Glow Effects */
+      /* ✦ Shadows & Glow Effects — now tied to var-driven gold */
       boxShadow: {
-        glow: "0 0 10px rgba(242, 184, 101, 0.4)",
-        "glow-strong": "0 0 20px rgba(242, 184, 101, 0.6)",
+        glow: "0 0 10px rgba(var(--gold-rgb), 0.40)",
+        "glow-strong": "0 0 20px rgba(var(--gold-rgb), 0.60)",
         "glow-soft": "0 0 25px rgba(255, 255, 255, 0.15)",
       },
 
+      /**
+       * NOTE: Tailwind doesn't ship textShadow core utility by default.
+       * If you have a plugin enabling it, this stays useful.
+       * Otherwise, ignore or replace with drop-shadow utilities.
+       */
       textShadow: {
-        glow: "0 0 10px rgba(242, 184, 101, 0.6)",
+        glow: "0 0 10px rgba(var(--gold-rgb), 0.60)",
       },
 
       backdropBlur: {
@@ -113,16 +141,16 @@ const config: Config = {
         35: "0.35",
       },
 
-      /* ✦ Animations */
+      /* ✦ Animations — gold now references vars */
       keyframes: {
         pulseGlow: {
           "0%, 100%": {
             opacity: "1",
-            boxShadow: "0 0 10px rgba(242,184,101,0.4)",
+            boxShadow: "0 0 10px rgba(var(--gold-rgb), 0.40)",
           },
           "50%": {
             opacity: "0.85",
-            boxShadow: "0 0 20px rgba(242,184,101,0.6)",
+            boxShadow: "0 0 20px rgba(var(--gold-rgb), 0.60)",
           },
         },
         float: {
@@ -157,11 +185,16 @@ const config: Config = {
         shimmerFlow: "shimmerFlow 20s ease-in-out infinite",
       },
 
+      /**
+       * Background images — keep them gold-true.
+       * IMPORTANT: Tailwind can’t read CSS vars inside gradients on every browser
+       * perfectly, but this approach is stable.
+       */
       backgroundImage: {
         "gold-gradient":
-          "linear-gradient(90deg, #f2b865 0%, #ffdd9a 50%, #f2b865 100%)",
+          "linear-gradient(90deg, rgba(var(--gold-rgb),0.95) 0%, rgba(var(--gold-rgb),0.45) 50%, rgba(var(--gold-rgb),0.95) 100%)",
         "auric-gradient":
-          "radial-gradient(circle at 50% -10%, rgba(242,184,101,0.1), rgba(10,10,15,1) 70%)",
+          "radial-gradient(circle at 50% -10%, rgba(var(--gold-rgb),0.10), rgba(10,10,15,1) 70%)",
       },
 
       transitionTimingFunction: {
