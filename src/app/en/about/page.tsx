@@ -81,7 +81,7 @@ export default function HomePage() {
             Explore the Work
           </Link>
           <Link
-            href="/en/luma"
+            href="https://lumaeconomy.com"
             className="btn-outline hover:scale-105 transform"
           >
             Enter LUMA

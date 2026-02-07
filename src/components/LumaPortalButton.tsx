@@ -1,11 +1,12 @@
 // components/LumaPortalButton.tsx
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export function LumaPortalButton({ locale }: { locale: "en" | "es" }) {
-  const href = locale === "es" ? "/es/luma" : "/en/luma";
+  const href = "https://lumaeconomy.com";
   const label = locale === "es" ? "Portal LUMA" : "LUMA Portal";
 
   return (
@@ -20,12 +21,10 @@ export function LumaPortalButton({ locale }: { locale: "en" | "es" }) {
         aria-label={label}
         data-luma-portal="true"
         className="luma-portal-btn"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <img
-          src="symbols/luma-sigil.svg"
-          alt=""
-          className="luma-portal-sigil"
-        />
+        <Image src="/symbols/luma-sigil.svg" alt="" width={24} height={24} className="luma-portal-sigil" />
       </Link>
 
       <span className="luma-portal-tooltip">

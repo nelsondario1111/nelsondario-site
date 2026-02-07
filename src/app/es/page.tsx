@@ -82,7 +82,7 @@ export default function HomePageEs() {
             Explorar servicios
           </Link>
           <Link
-            href="/es/luma"
+            href="https://lumaeconomy.com"
             className="btn-outline hover:scale-105 transform"
           >
             Entrar a LUMA

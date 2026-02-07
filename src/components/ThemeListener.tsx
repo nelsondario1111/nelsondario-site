@@ -3,6 +3,10 @@
 import { useEffect } from "react";
 
 type Theme = "light" | "dark";
+type LegacyMediaQueryList = MediaQueryList & {
+  addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+  removeListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+};
 
 /**
  * ThemeListener
@@ -44,7 +48,7 @@ export function ThemeListener() {
     }
 
     // Legacy Safari fallback
-    const legacyMql = mql as any;
+    const legacyMql = mql as LegacyMediaQueryList;
     legacyMql.addListener?.(onChange);
     return () => legacyMql.removeListener?.(onChange);
   }, []);

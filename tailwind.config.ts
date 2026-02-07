@@ -1,4 +1,7 @@
-import type { Config } from "tailwindcss"
+import aspectRatio from "@tailwindcss/aspect-ratio";
+import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography";
+import type { Config } from "tailwindcss";
 
 /**
  * ✦ NelsonDario.com Core Theme
@@ -204,11 +207,7 @@ const config: Config = {
     },
   },
 
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/aspect-ratio"),
-  ],
-}
+  plugins: [typography, forms, aspectRatio],
+};
 
-export default config
+export default config;

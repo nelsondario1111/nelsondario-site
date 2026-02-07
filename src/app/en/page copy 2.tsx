@@ -281,11 +281,10 @@ function AmbientToneToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [enabled, setEnabled] = useState(false);
 
-  // Load preference (but don't autoplay — user must click)
+  // Probe localStorage access once (some browser modes can block it).
   useEffect(() => {
     try {
-      const saved = window.localStorage.getItem("ambientToneEnabled");
-      if (saved === "true") setEnabled(false); // show as off until user explicitly toggles
+      void window.localStorage.getItem("ambientToneEnabled");
     } catch {
       // ignore
     }

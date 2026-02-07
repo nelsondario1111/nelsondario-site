@@ -40,11 +40,14 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
-  // Re-trigger portal animation each time the menu opens
   const [portalKey, setPortalKey] = useState(0);
-  useEffect(() => {
-    if (isOpen) setPortalKey((k) => k + 1);
-  }, [isOpen]);
+  const toggleMenu = () => {
+    setIsOpen((prev) => {
+      const next = !prev;
+      if (next) setPortalKey((k) => k + 1);
+      return next;
+    });
+  };
 
   /* ✦ Data Setup */
   const allLinks = useMemo(() => navLinks[locale] as NavLinkItem[], [locale]);
@@ -74,11 +77,6 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
-
-  useEffect(() => {
-    setIsOpen(false);
-    setIsHidden(false);
-  }, [pathname]);
 
   const variantClasses: Record<NavVariant, string> = {
     default: "text-[var(--color-gold)]",
@@ -199,7 +197,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
           <div className="md:hidden flex justify-end">
             <button
               type="button"
-              onClick={() => setIsOpen((v) => !v)}
+              onClick={toggleMenu}
               className="p-2 text-[var(--color-gold)]"
               aria-label={
                 isOpen

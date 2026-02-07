@@ -3,27 +3,21 @@
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
+const getInitialTheme = (): Theme => {
+  if (typeof window === "undefined") return "light";
+
+  const saved = localStorage.getItem("theme");
+  if (saved === "dark" || saved === "light") return saved;
+
+  return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? "dark" : "light";
+};
 
 export function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    setMounted(true);
-
-    // 1) prefer saved theme
-    const saved = (localStorage.getItem("theme") as Theme | null) ?? null;
-
-    // 2) fallback to system preference
-    const systemPrefersDark =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
-
-    const initial: Theme = saved ?? (systemPrefersDark ? "dark" : "light");
-
-    setTheme(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
-  }, []);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
 
   function toggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
@@ -31,9 +25,6 @@ export function ThemeToggle() {
     localStorage.setItem("theme", next);
     document.documentElement.classList.toggle("dark", next === "dark");
   }
-
-  // Prevent hydration mismatch
-  if (!mounted) return null;
 
   return (
     <button
