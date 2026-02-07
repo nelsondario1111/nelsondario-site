@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 /**
- * ✦ NelsonDario.com Middleware ✦
+ * ✦ NelsonDario.com Proxy ✦
  * 1) Language redirect on root (/) → /en or /es via Accept-Language
  * 2) Legacy LUMA route redirects → https://lumaeconomy.com (308)
  */
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Ignore static files and API routes
