@@ -17,14 +17,13 @@ const isExternalHref = (href: string) => /^https?:\/\//.test(href);
  * IMPORTANT:
  * - "Lumina" contains "luma" as a substring -> naive includes("luma") breaks the menu.
  * - This matcher only treats LUMA as LUMA when it is explicitly "LUMA" (label)
- *   or points to lumaeconomy.com, or a legacy /luma path.
+ *   or points to a legacy /luma path.
  */
 const isLumaLink = (link: NavLinkItem) => {
   const label = (link.label || "").trim().toLowerCase();
   const href = link.href || "";
   return (
     label === "luma" ||
-    href.includes("lumaeconomy.com") ||
     href.startsWith("/en/luma") ||
     href.startsWith("/es/luma") ||
     href.startsWith("/luma")

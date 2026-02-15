@@ -8,8 +8,6 @@ import { SubscribeForm } from "@/components/SubscribeForm";
 /**
  * ✦ Footer — NelsonDario.com ✦
  * Updates:
- * - LUMA is external (https://lumaeconomy.com)
- * - No internal LUMA route detection
  * - Locale-aware logic with safer language switch
  * - External links are explicit anchors
  */
@@ -20,8 +18,6 @@ export function Footer() {
   const isSpanish = locale === "es";
 
   const currentYear = new Date().getFullYear();
-  const lumaUrl = "https://lumaeconomy.com";
-
   // ✦ Language switch: swap /en <-> /es while preserving the rest of the path
   // Examples:
   // /en/services -> /es/services
@@ -53,6 +49,26 @@ export function Footer() {
         }}
       />
 
+      {/* ✦ Sitewide CTA Strip */}
+      <div className="relative border-b border-[color-mix(in_srgb,var(--color-gold)_18%,transparent)] bg-[color-mix(in_srgb,var(--bg-base)_88%,black)]/70">
+        <div className="container mx-auto px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-center md:text-left">
+          <p className="text-sm md:text-base text-[var(--text-base)]/85">
+            {isSpanish
+              ? "¿Quieres sistemas calmados y próximos pasos claros? Empieza aquí."
+              : "Want calm systems and clear next steps? Start here."}
+          </p>
+
+          <div className="flex items-center justify-center md:justify-end gap-3">
+            <Link href={`/${locale}/book`} className="btn-primary text-[11px] px-4 py-2">
+              {isSpanish ? "Reservar" : "Book"}
+            </Link>
+            <a href="#subscribe-lumina" className="btn-outline text-[11px] px-4 py-2">
+              {isSpanish ? "Suscribirme" : "Subscribe"}
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* ✦ Main Grid */}
       <div className="relative container mx-auto px-6 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left">
         {/* Column 1 — Identity */}
@@ -81,35 +97,8 @@ export function Footer() {
             {isSpanish ? "View site in English" : "Ver sitio en Español"}
           </Link>
 
-          {/* Ecosystem bridge (external) */}
           <p className="mt-3 text-[0.75rem] opacity-70">
-            {isSpanish ? (
-              <>
-                Parte del ecosistema{" "}
-                <a
-                  href={lumaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-gold)]/90 hover:text-[var(--color-gold)] underline underline-offset-4"
-                >
-                  LUMA
-                </a>{" "}
-                · Amor · Confianza · Energía
-              </>
-            ) : (
-              <>
-                Part of the{" "}
-                <a
-                  href={lumaUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-gold)]/90 hover:text-[var(--color-gold)] underline underline-offset-4"
-                >
-                  LUMA
-                </a>{" "}
-                ecosystem · Love · Trust · Energy
-              </>
-            )}
+            {isSpanish ? "Amor · Confianza · Energía" : "Love · Trust · Energy"}
           </p>
         </motion.div>
 
@@ -145,15 +134,6 @@ export function Footer() {
             );
           })}
 
-          {/* External LUMA link */}
-          <a
-            href={lumaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block relative text-[var(--color-gold)]/80 hover:text-[var(--color-gold)] transition-colors"
-          >
-            LUMA <span className="ml-1 text-[10px] opacity-70">↗</span>
-          </a>
         </motion.nav>
 
         {/* Column 3 — Social + Subscribe */}
@@ -188,7 +168,7 @@ export function Footer() {
             {isSpanish ? "Sígueme y únete a la conversación" : "Follow and join the conversation"}
           </p>
 
-          <div className="w-full max-w-sm mt-2">
+          <div className="w-full max-w-sm mt-2" id="subscribe-lumina">
             <SubscribeForm
               label={isSpanish ? "Suscríbete a Lumina" : "Subscribe to Lumina"}
               placeholder={isSpanish ? "Tu correo electrónico" : "Your email address"}
@@ -210,32 +190,7 @@ export function Footer() {
         </div>
 
         <p className="text-[0.7rem] opacity-60 mt-3">
-          {isSpanish ? (
-            <>
-              Ecosistema{" "}
-              <a
-                href={lumaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--color-gold)]/90 hover:text-[var(--color-gold)] underline underline-offset-4"
-              >
-                LUMA
-              </a>{" "}
-              · Amor · Confianza · Energía
-            </>
-          ) : (
-            <>
-              <a
-                href={lumaUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[var(--color-gold)]/90 hover:text-[var(--color-gold)] underline underline-offset-4"
-              >
-                LUMA
-              </a>{" "}
-              · Love · Trust · Energy
-            </>
-          )}
+          {isSpanish ? "Amor · Confianza · Energía" : "Love · Trust · Energy"}
         </p>
 
         <p className="text-[0.7rem] mt-2 opacity-50">✧ Anchored in Love · Guided by Light · Rooted in Truth ✧</p>

@@ -27,6 +27,101 @@ type Service = {
   isWaitlist?: boolean;
 };
 
+type ProductizedPackage = {
+  title: string;
+  outcome: string;
+  inclusions: string[];
+  bestFor: string;
+  startingAt: string;
+};
+
+type IntensiveOffer = {
+  title: string;
+  duration: string;
+  summary: string;
+  bestFor: string;
+};
+
+type DigitalProduct = {
+  title: string;
+  summary: string;
+  format: string;
+};
+
+const productizedPackages: ProductizedPackage[] = [
+  {
+    title: "Starter Site",
+    outcome: "A calm, high-converting site that gets you leads fast.",
+    inclusions: [
+      "Focused messaging + page architecture.",
+      "Bilingual-ready core pages (EN/ES).",
+      "Mobile-first responsive implementation.",
+      "Simple inquiry flow + handoff guide.",
+    ],
+    bestFor: "New offers, early-stage practitioners, and clean relaunches.",
+    startingAt: "Starting at …",
+  },
+  {
+    title: "Growth Site + Content System",
+    outcome: "A website + content workflow that compounds visibility and trust.",
+    inclusions: [
+      "Expanded service architecture + narrative flow.",
+      "Resource or article structure for ongoing visibility.",
+      "Core SEO setup + performance polish.",
+      "Editorial workflow for calm consistency.",
+    ],
+    bestFor: "Founders ready to grow authority without burning out.",
+    startingAt: "Starting at …",
+  },
+  {
+    title: "Automation Upgrade",
+    outcome: "Follow-ups, intake, and scheduling handled with calm AI and clean systems.",
+    inclusions: [
+      "AI receptionist flow for first-touch intake.",
+      "CRM follow-up logic and response templates.",
+      "Simple automations for reminders and nurture.",
+      "Training + operating playbook for your team.",
+    ],
+    bestFor: "Service businesses needing reliable lead handling and continuity.",
+    startingAt: "Starting at …",
+  },
+];
+
+const intensiveOffers: IntensiveOffer[] = [
+  {
+    title: "Business Clarity Intensive",
+    duration: "90 min",
+    summary:
+      "A focused strategic reset to identify your next most aligned offer, message, and execution path.",
+    bestFor: "Entrepreneurs at an inflection point who need crisp direction now.",
+  },
+  {
+    title: "AI + Brand Alignment Intensive",
+    duration: "90 min",
+    summary:
+      "Align your brand voice, client journey, and automation stack so your systems feel human and coherent.",
+    bestFor: "Teams ready to scale without losing soul.",
+  },
+];
+
+const digitalProducts: DigitalProduct[] = [
+  {
+    title: "Bilingual Website Starter Kit",
+    summary: "Pages, sections, and copy blocks to launch in EN/ES quickly.",
+    format: "Templates + checklist bundle",
+  },
+  {
+    title: "Contractor Website Template",
+    summary: "A modern template built to rank locally and convert.",
+    format: "Site template + content prompts",
+  },
+  {
+    title: "AI Automation Blueprints",
+    summary: "Proven workflows for intake, follow-up, and client management.",
+    format: "Workflow blueprints + SOP notes",
+  },
+];
+
 const designServices: Service[] = [
   {
     title: "Sacred Digital Spaces",
@@ -243,6 +338,103 @@ export default function ServicesPage() {
         </p>
       </motion.section>
 
+      {/* 🜁 WAYS TO WORK TOGETHER */}
+      <motion.section
+        id="ways-to-work"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/95 backdrop-blur-md"
+      >
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              Ecosystem Offers
+            </p>
+            <h2 className="section-title mb-3">Ways to Work Together</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Fixed-scope pathways designed for momentum, clarity, and sustainable cashflow.
+            </p>
+          </header>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {productizedPackages.map((pkg) => (
+              <ProductizedPackageCard key={pkg.title} item={pkg} locale="en" />
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 🜂 INTENSIVES */}
+      <motion.section
+        id="intensives"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[var(--bg-base)]"
+      >
+        <div className="max-w-5xl mx-auto">
+          <header className="text-center mb-10">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              High-Touch
+            </p>
+            <h2 className="section-title mb-3">Intensives</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Optional high-ticket containers for accelerated alignment and decisive action.
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {intensiveOffers.map((item) => (
+              <IntensiveCard key={item.title} item={item} locale="en" />
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 🜃 DIGITAL PRODUCTS + MEMBERSHIP */}
+      <motion.section
+        id="digital-products"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[color-mix(in_srgb,var(--bg-base)_90%,black)]/95"
+      >
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-10">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              Semi-Passive Layer
+            </p>
+            <h2 className="section-title mb-3">Digital Products</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Practical assets built to support implementation between sessions.
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {digitalProducts.map((item) => (
+              <DigitalProductCard key={item.title} item={item} locale="en" />
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/70 p-6 text-center">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-base)]/60 mb-2">
+              Recurring Support
+            </p>
+            <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">Lumina Membership (Coming Soon)</h3>
+            <p className="text-sm text-[var(--text-base)]/75 mb-4">
+              A recurring space for monthly integration, implementation support, and calm accountability.
+            </p>
+            <Link href="/en/resources#calm-systems-checklist" className="btn-outline hover:scale-105 transform">
+              Join waitlist
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+
       {/* 🜃 TECH / BUILD */}
       <motion.section
         id="design-technology"
@@ -410,6 +602,26 @@ export default function ServicesPage() {
           <ToContactButtons />
         </div>
       </motion.section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Nelson Dario",
+            url: "https://nelsondario.com/en/services",
+            areaServed: ["Toronto", "Canada", "Remote"],
+            serviceType: [
+              "Web Design",
+              "AI Automation",
+              "Human Design Guidance",
+              "Higher Self Hypnotherapy",
+              "Business Intensives",
+            ],
+          }),
+        }}
+      />
     </main>
   );
 }
@@ -485,6 +697,95 @@ function ServiceCard({ service }: { service: Service }) {
         >
           <span>{service.btnText}</span>
           <span className="group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function ProductizedPackageCard({
+  item,
+  locale,
+}: {
+  item: ProductizedPackage;
+  locale: "en" | "es";
+}) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.25 }}
+      className="p-7 rounded-2xl border border-[var(--color-gold)]/20 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/90 shadow-md hover:shadow-lg hover:border-[var(--color-gold)] transition-all h-full flex flex-col"
+    >
+      <h3 className="text-xl font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/80 mb-4">{item.outcome}</p>
+
+      <ul className="space-y-2 text-sm text-[var(--text-base)]/75">
+        {item.inclusions.map((bullet) => (
+          <li key={bullet} className="flex gap-2 items-start">
+            <span className="mt-[6px] w-1 h-1 rounded-full bg-[var(--color-gold)] shrink-0 opacity-70" />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-4 text-xs text-[var(--text-base)]/65">
+        <span className="uppercase tracking-[0.18em] text-[var(--text-base)]/50">Best for</span>
+        <br />
+        {item.bestFor}
+      </p>
+
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[var(--color-gold)]/85">
+        {item.startingAt}
+      </p>
+
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10 flex flex-wrap gap-2">
+        <Link href={`/${locale}/book`} className="btn-primary text-[11px] px-4 py-2">
+          Book a Resonance Check
+        </Link>
+        <Link href={`/${locale}/contact`} className="btn-outline text-[11px] px-4 py-2">
+          Ask a question
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function IntensiveCard({ item, locale }: { item: IntensiveOffer; locale: "en" | "es" }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.25 }}
+      className="p-7 rounded-2xl border border-[var(--color-gold)]/18 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/85 shadow-md hover:border-[var(--color-gold)] transition-all h-full flex flex-col"
+    >
+      <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-base)]/55 mb-2">{item.duration}</p>
+      <h3 className="text-xl font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/78">{item.summary}</p>
+      <p className="mt-4 text-sm text-[var(--text-base)]/68">
+        <span className="font-semibold text-[var(--text-base)]/78">Best for:</span> {item.bestFor}
+      </p>
+
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
+        <Link href={`/${locale}/contact?topic=intensive`} className="btn-outline text-[11px] px-4 py-2">
+          Apply / Request Invite
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function DigitalProductCard({ item, locale }: { item: DigitalProduct; locale: "en" | "es" }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.25 }}
+      className="p-6 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/85 shadow-sm hover:border-[var(--color-gold)] hover:shadow-md transition-all h-full flex flex-col"
+    >
+      <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--text-base)]/55 mb-2">{item.format}</p>
+      <h3 className="text-lg font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/75">{item.summary}</p>
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
+        <Link href={`/${locale}/resources#calm-systems-checklist`} className="btn-outline text-[11px] px-4 py-2">
+          Join waitlist
         </Link>
       </div>
     </motion.article>

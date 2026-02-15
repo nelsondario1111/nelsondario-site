@@ -11,6 +11,101 @@ import ToContactButtons from "@/components/ToContactButtons";
  * Tono: Cálido, aterrizado, seguro, de alta frecuencia.
  */
 
+type ProductizedPackage = {
+  title: string;
+  outcome: string;
+  inclusions: string[];
+  bestFor: string;
+  startingAt: string;
+};
+
+type IntensiveOffer = {
+  title: string;
+  duration: string;
+  summary: string;
+  bestFor: string;
+};
+
+type DigitalProduct = {
+  title: string;
+  summary: string;
+  format: string;
+};
+
+const productizedPackages: ProductizedPackage[] = [
+  {
+    title: "Sitio Starter",
+    outcome: "Un sitio claro y calmado que genera clientes rápido.",
+    inclusions: [
+      "Arquitectura de mensaje y páginas esenciales.",
+      "Base bilingüe preparada para EN/ES.",
+      "Implementación responsive priorizando mobile.",
+      "Flujo simple de contacto + guía de uso.",
+    ],
+    bestFor: "Nuevas ofertas, relanzamientos y primeras etapas de negocio.",
+    startingAt: "Desde …",
+  },
+  {
+    title: "Sitio Growth + Sistema de Contenido",
+    outcome: "Web + flujo de contenido que multiplica visibilidad y confianza.",
+    inclusions: [
+      "Estructura de servicios y narrativa de crecimiento.",
+      "Base de recursos o artículos para autoridad.",
+      "SEO esencial + optimización de rendimiento.",
+      "Flujo editorial claro para consistencia.",
+    ],
+    bestFor: "Fundadores que quieren crecer sin caer en sobrecarga.",
+    startingAt: "Desde …",
+  },
+  {
+    title: "Upgrade de Automatización",
+    outcome: "Seguimiento, formularios y agenda con IA calmada y sistemas limpios.",
+    inclusions: [
+      "Recepción inicial con IA para primeros contactos.",
+      "Lógica de seguimiento dentro del CRM.",
+      "Automatizaciones de recordatorio y nurture.",
+      "Capacitación + playbook operativo.",
+    ],
+    bestFor: "Negocios de servicios que necesitan continuidad comercial.",
+    startingAt: "Desde …",
+  },
+];
+
+const intensiveOffers: IntensiveOffer[] = [
+  {
+    title: "Business Clarity Intensive",
+    duration: "90 min",
+    summary:
+      "Un reset estratégico para definir tu siguiente oferta, mensaje y plan de ejecución con claridad.",
+    bestFor: "Emprendedores en punto de inflexión que necesitan dirección concreta.",
+  },
+  {
+    title: "AI + Brand Alignment Intensive",
+    duration: "90 min",
+    summary:
+      "Alinea tu marca, experiencia de cliente y stack de automatización para escalar sin perder alma.",
+    bestFor: "Equipos y líderes que buscan coherencia entre expansión y esencia.",
+  },
+];
+
+const digitalProducts: DigitalProduct[] = [
+  {
+    title: "Kit Web Bilingüe",
+    summary: "Estructura y textos para lanzar EN/ES sin fricción.",
+    format: "Plantillas + checklist",
+  },
+  {
+    title: "Template para Contratistas",
+    summary: "Plantilla moderna para posicionar local y convertir.",
+    format: "Template + prompts de contenido",
+  },
+  {
+    title: "Planos de Automatización con IA",
+    summary: "Flujos para captación, seguimiento y gestión.",
+    format: "Blueprints + SOPs",
+  },
+];
+
 const designServices = [
   {
     title: "Espacios Digitales Sagrados (Web & Marca)",
@@ -73,14 +168,14 @@ const guidanceServices = [
 
 const deepWork = [
   {
-    title: "Viajes de QHHT & Hipnosis",
+    title: "Regresión del Alma e Hipnoterapia del Ser Superior",
     tag: "La Profundidad",
-    desc: "Accede a los registros de tu alma. Para cuando estás listo/a para entender el 'Por qué' de tu vida, sanar patrones profundos y recordar quién eres en verdad.",
+    desc: "Un portal de trance profundo para liberar patrones, recibir guía del Ser Superior y regresar a la coherencia.",
     bullets: [
-      "Regresión a vidas pasadas para liberar bucles kármicos.",
-      "Comunicación directa con el Subconsciente / Yo Superior.",
-      "Escaneo corporal y sanación energética.",
-      "Sostenido en un contenedor de absoluta seguridad y amor (Presencial · Toronto).",
+      "Exploración regresiva (memoria simbólica, vidas pasadas o narrativa del alma).",
+      "Comunicación con el Ser Superior.",
+      "Liberación energética + integración aterrizada.",
+      "Contenedor presencial (Toronto) + cupos remotos limitados.",
     ],
   },
 ];
@@ -202,6 +297,105 @@ export default function ServicesPage() {
           Algunos de estos portales son online, otros están enraizados en Toronto, pero todos están
           diseñados para encontrarte exactamente donde estás.
         </p>
+      </motion.section>
+
+      {/* 🜁 FORMAS DE TRABAJAR JUNTOS */}
+      <motion.section
+        id="formas-de-trabajar"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/95 backdrop-blur-md"
+      >
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              Ecosistema de Ingresos
+            </p>
+            <h2 className="section-title mb-3">Formas de Trabajar Juntos</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Paquetes de alcance fijo para sostener flujo de caja con claridad y calma.
+            </p>
+          </header>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            {productizedPackages.map((pkg) => (
+              <ProductizedPackageCardEs key={pkg.title} item={pkg} />
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 🜂 INTENSIVOS */}
+      <motion.section
+        id="intensivos"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[var(--bg-base)]"
+      >
+        <div className="max-w-5xl mx-auto">
+          <header className="text-center mb-10">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              Alta Profundidad
+            </p>
+            <h2 className="section-title mb-3">Intensivos</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Contenedores opcionales de alto nivel para decisiones y alineación acelerada.
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {intensiveOffers.map((item) => (
+              <IntensiveCardEs key={item.title} item={item} />
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* 🜃 PRODUCTOS DIGITALES + MEMBRESÍA */}
+      <motion.section
+        id="productos-digitales"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="px-6 py-20 md:px-10 bg-[color-mix(in_srgb,var(--bg-base)_90%,black)]/95"
+      >
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-10">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
+              Capa Semi-Pasiva
+            </p>
+            <h2 className="section-title mb-3">Productos Digitales</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Activos prácticos para implementar entre sesiones.
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {digitalProducts.map((item) => (
+              <DigitalProductCardEs key={item.title} item={item} />
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/70 p-6 text-center">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-base)]/60 mb-2">
+              Soporte Recurrente
+            </p>
+            <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
+              Membresía Lumina (próximamente)
+            </h3>
+            <p className="text-sm text-[var(--text-base)]/75 mb-4">
+              Un espacio mensual para integración, implementación y acompañamiento con calma.
+            </p>
+            <Link href="/es/resources#calm-systems-checklist" className="btn-outline hover:scale-105 transform">
+              Unirme a la lista
+            </Link>
+          </div>
+        </div>
       </motion.section>
 
       {/* 🜃 TECNOLOGÍA / ARQUITECTURA */}
@@ -442,6 +636,109 @@ export default function ServicesPage() {
           <ToContactButtons />
         </div>
       </motion.section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Nelson Dario",
+            url: "https://nelsondario.com/es/services",
+            areaServed: ["Toronto", "Canadá", "Remoto"],
+            serviceType: [
+              "Diseño Web",
+              "Automatización con IA",
+              "Guía de Diseño Humano",
+              "Hipnoterapia del Ser Superior",
+              "Intensivos de Negocio",
+            ],
+          }),
+        }}
+      />
     </main>
+  );
+}
+
+function ProductizedPackageCardEs({ item }: { item: ProductizedPackage }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.25 }}
+      className="p-7 rounded-2xl border border-[var(--color-gold)]/20 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/90 shadow-md hover:shadow-lg hover:border-[var(--color-gold)] transition-all h-full flex flex-col"
+    >
+      <h3 className="text-xl font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/80 mb-4">{item.outcome}</p>
+
+      <ul className="space-y-2 text-sm text-[var(--text-base)]/75">
+        {item.inclusions.map((bullet) => (
+          <li key={bullet} className="flex gap-2 items-start">
+            <span className="mt-[6px] w-1 h-1 rounded-full bg-[var(--color-gold)] shrink-0 opacity-70" />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-4 text-xs text-[var(--text-base)]/65">
+        <span className="uppercase tracking-[0.18em] text-[var(--text-base)]/50">Ideal para</span>
+        <br />
+        {item.bestFor}
+      </p>
+
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[var(--color-gold)]/85">
+        {item.startingAt}
+      </p>
+
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10 flex flex-wrap gap-2">
+        <Link href="/es/book" className="btn-primary text-[11px] px-4 py-2">
+          Reservar Sesión de Resonancia
+        </Link>
+        <Link href="/es/contact" className="btn-outline text-[11px] px-4 py-2">
+          Hacer una pregunta
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function IntensiveCardEs({ item }: { item: IntensiveOffer }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.25 }}
+      className="p-7 rounded-2xl border border-[var(--color-gold)]/18 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/85 shadow-md hover:border-[var(--color-gold)] transition-all h-full flex flex-col"
+    >
+      <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-base)]/55 mb-2">{item.duration}</p>
+      <h3 className="text-xl font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/78">{item.summary}</p>
+      <p className="mt-4 text-sm text-[var(--text-base)]/68">
+        <span className="font-semibold text-[var(--text-base)]/78">Ideal para:</span> {item.bestFor}
+      </p>
+
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
+        <Link href="/es/contact?topic=intensivo" className="btn-outline text-[11px] px-4 py-2">
+          Aplicar / Solicitar invitación
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function DigitalProductCardEs({ item }: { item: DigitalProduct }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.01 }}
+      transition={{ duration: 0.25 }}
+      className="p-6 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/85 shadow-sm hover:border-[var(--color-gold)] hover:shadow-md transition-all h-full flex flex-col"
+    >
+      <p className="text-[10px] uppercase tracking-[0.22em] text-[var(--text-base)]/55 mb-2">{item.format}</p>
+      <h3 className="text-lg font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
+      <p className="text-sm text-[var(--text-base)]/75">{item.summary}</p>
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
+        <Link href="/es/resources#calm-systems-checklist" className="btn-outline text-[11px] px-4 py-2">
+          Unirme a la lista
+        </Link>
+      </div>
+    </motion.article>
   );
 }
