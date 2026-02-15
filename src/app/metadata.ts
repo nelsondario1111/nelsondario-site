@@ -22,7 +22,6 @@ export const metadata: Metadata = {
     "Conscious Business",
     "Toronto",
     "Ecuador",
-    "LUMA",
     "Conversations with Lumina",
   ],
   authors: [{ name: "Nelson Dario", url: baseUrl }],

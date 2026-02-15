@@ -8,7 +8,6 @@ import { useEffect, useMemo } from "react";
 /**
  * ✦ NelsonDario.com — Home Page ✦
  * Updates:
- * - LUMA is external (lumaeconomy.com)
  * - Locale-aware internal links (EN/ES safe)
  * - Removed all sound / ambient tone logic
  * - Option A hero copy (Archetype line + micro-story + clearer positioning)
@@ -28,7 +27,6 @@ type Pillar = {
 export default function HomePage() {
   const pathname = usePathname() || "/en";
   const locale: "en" | "es" = pathname.startsWith("/es") ? "es" : "en";
-  const lumaUrl = "https://lumaeconomy.com";
 
   // ✧ Parallax scroll effect for background
   useEffect(() => {
@@ -205,21 +203,12 @@ export default function HomePage() {
             {locale === "es" ? "Explorar el trabajo" : "Explore the Work"}
           </Link>
 
-          <a
-            href={lumaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={`/${locale}/book`}
             className="btn-outline hover:scale-105 transform"
-            aria-label={
-              locale === "es"
-                ? "Entrar a LUMA (abre en una nueva pestaña)"
-                : "Enter LUMA (opens in a new tab)"
-            }
-            title="LUMA"
           >
-            {locale === "es" ? "Entrar a LUMA" : "Enter LUMA"}{" "}
-            <span className="ml-1 text-xs opacity-80">↗</span>
-          </a>
+            {locale === "es" ? "Reservar Sesión de Resonancia" : "Book a Resonance Check"}
+          </Link>
         </div>
 
         {/* Symbolic anchors (3 pillars) */}

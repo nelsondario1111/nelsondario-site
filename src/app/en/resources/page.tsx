@@ -44,8 +44,8 @@ const tools: ResourceItem[] = [
     tag: "Partner Links",
     summary:
       "A minimal list of trusted tools and partner ecosystems that support this work. Some links may include affiliate partnerships.",
-    href: "https://lumaeconomy.com",
-    mode: "external",
+    href: "#calm-systems-checklist",
+    mode: "waitlist",
   },
 ];
 

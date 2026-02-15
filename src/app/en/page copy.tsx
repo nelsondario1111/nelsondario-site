@@ -76,10 +76,10 @@ export default function HomePage() {
             Explore Services
           </Link>
           <Link
-            href="/en/luma"
+            href="/en/book"
             className="btn-outline hover:scale-105 transform"
           >
-            Discover LUMA
+            Book a Resonance Check
           </Link>
         </div>
       </motion.section>

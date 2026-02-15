@@ -5,7 +5,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * ✦ NelsonDario.com Core Theme
- * Unified design system for Nelson Dario, Lumina & LUMA projects
+ * Unified design system for Nelson Dario and Lumina projects
  * Frequency: Truth · Beauty · Sovereignty
  * GOLD: Single Source of Truth = #E2A93F (via CSS vars)
  */
@@ -28,7 +28,6 @@ const config: Config = {
     "animate-pulseGlow",
     "aura-gold",
     "aura-soft",
-    "luma-bg",
     "footer-wave",
   ],
 

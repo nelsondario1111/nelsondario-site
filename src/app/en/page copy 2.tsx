@@ -117,8 +117,8 @@ export default function HomePage() {
           >
             Explore the Work
           </Link>
-          <Link href="/en/luma" className="btn-outline hover:scale-105 transform">
-            Enter LUMA
+          <Link href="/en/book" className="btn-outline hover:scale-105 transform">
+            Book a Resonance Check
           </Link>
         </div>
       </motion.section>

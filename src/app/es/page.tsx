@@ -82,10 +82,10 @@ export default function HomePageEs() {
             Explorar servicios
           </Link>
           <Link
-            href="https://lumaeconomy.com"
+            href="/es/book"
             className="btn-outline hover:scale-105 transform"
           >
-            Entrar a LUMA
+            Reservar Sesión de Resonancia
           </Link>
         </div>
       </motion.section>

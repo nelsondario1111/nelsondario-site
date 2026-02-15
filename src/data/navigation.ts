@@ -13,8 +13,6 @@ export type NavLink = {
   /** Optional small helper text (mobile menus / tooltips later) */
   description?: string;
 
-  /** Optional icon key so Nav can render a sigil button, etc. */
-  icon?: "luma-sigil";
 };
 
 export const navLinks: Record<"en" | "es", NavLink[]> = {

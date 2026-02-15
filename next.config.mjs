@@ -2,7 +2,7 @@
 
 // ───────────────────────────────
 // NelsonDario.com — 2025 Configuration
-// Integration: Personal Brand + External LUMA Economy
+// Integration: Personal Brand
 // ───────────────────────────────
 
 const nextConfig = {
@@ -11,7 +11,6 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "nelsondario.com" },
-      { protocol: "https", hostname: "www.lumaeconomy.com" }, // Trusted internal-external link
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "images.unsplash.com" }
     ],
@@ -36,7 +35,7 @@ const nextConfig = {
     ];
   },
 
-  // ✅ Routing & Redirects: The Bridge to LUMA Economy
+  // ✅ Routing & Redirects
   async redirects() {
     return [
       // 1. Root redirection to English Portal
@@ -45,18 +44,7 @@ const nextConfig = {
         destination: "/en",
         permanent: true
       },
-      // 2. Transitioning LUMA paths to the new domain (SEO preservation)
-      {
-        source: "/en/luma/:path*",
-        destination: "https://www.lumaeconomy.com/:path*",
-        permanent: true // Tells Google the move is permanent
-      },
-      {
-        source: "/es/luma/:path*",
-        destination: "https://www.lumaeconomy.com/es/:path*",
-        permanent: true
-      },
-      // 3. Legacy cleanup: Redirecting old QHHT paths to new Soul Work
+      // 2. Legacy cleanup: Redirecting old QHHT paths to new Soul Work
       {
         source: "/en/qhht",
         destination: "/en/services#deep-work",

@@ -8,27 +8,10 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { LanguageToggle } from "./LanguageToggle";
 import { navLinks } from "@/data/navigation";
 
-type NavVariant = "default" | "luma" | "lumina";
+type NavVariant = "default" | "accent" | "lumina";
 type NavLinkItem = { href: string; label: string; external?: boolean };
 
 const isExternalHref = (href: string) => /^https?:\/\//.test(href);
-
-/**
- * IMPORTANT:
- * - "Lumina" contains "luma" as a substring -> naive includes("luma") breaks the menu.
- * - This matcher only treats LUMA as LUMA when it is explicitly "LUMA" (label)
- *   or points to a legacy /luma path.
- */
-const isLumaLink = (link: NavLinkItem) => {
-  const label = (link.label || "").trim().toLowerCase();
-  const href = link.href || "";
-  return (
-    label === "luma" ||
-    href.startsWith("/en/luma") ||
-    href.startsWith("/es/luma") ||
-    href.startsWith("/luma")
-  );
-};
 
 export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
   const pathname = usePathname() || "/en";
@@ -50,8 +33,6 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
 
   /* ✦ Data Setup */
   const allLinks = useMemo(() => navLinks[locale] as NavLinkItem[], [locale]);
-  const lumaLink = useMemo(() => allLinks.find(isLumaLink), [allLinks]);
-  const links = useMemo(() => allLinks.filter((link) => !isLumaLink(link)), [allLinks]);
 
   /* ✦ Smart Hide / Show + scrolled state */
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -79,7 +60,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
 
   const variantClasses: Record<NavVariant, string> = {
     default: "text-[var(--color-gold)]",
-    luma: "text-[var(--color-gold)] drop-shadow-[0_0_8px_rgba(var(--gold-rgb),0.4)]",
+    accent: "text-[var(--color-gold)] drop-shadow-[0_0_8px_rgba(var(--gold-rgb),0.4)]",
     lumina: "text-[var(--color-gold)] [text-shadow:0_0_12px_rgba(var(--gold-rgb),0.4)]",
   };
 
@@ -170,7 +151,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
 
           {/* Desktop Links */}
           <div className="hidden md:flex justify-center items-center gap-8">
-            {links.map((link) => (
+            {allLinks.map((link) => (
               <NavLink key={link.href} link={link} pathname={pathname} locale={locale} />
             ))}
           </div>
@@ -189,7 +170,6 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
             </Link>
 
             <LanguageToggle />
-            {lumaLink && <LumaPortal link={lumaLink} />}
           </div>
 
           {/* Mobile Toggle */}
@@ -358,10 +338,10 @@ function MobilePortalHeader({
             }}
           />
 
-          {/* Sigil */}
+          {/* Brand mark */}
           <motion.img
-            src="/symbols/luma-sigil.svg"
-            alt="LUMA"
+            src="/images/logo.png"
+            alt="Nelson Dario"
             className="relative z-10 w-14 h-14"
             initial={{ rotate: -30, opacity: 0, scale: 0.92 }}
             animate={{ rotate: 0, opacity: 1, scale: 1 }}
@@ -442,59 +422,5 @@ function NavLink({ link, pathname, locale }: { link: NavLinkItem; pathname: stri
       {link.label}
       {ActiveDot}
     </Link>
-  );
-}
-
-/* ✦ LUMA Portal — rotating sigil + hover halo + tooltip */
-function LumaPortal({ link }: { link: NavLinkItem }) {
-  return (
-    <a
-      href={link.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative flex items-center justify-center w-10 h-10 rounded-full
-                 border border-[var(--color-gold)]/20 bg-[var(--color-gold)]/5
-                 hover:border-[var(--color-gold)]/60 transition-all duration-500 shadow-lg"
-      aria-label="Enter LUMA (opens in a new tab)"
-      title="Enter LUMA"
-    >
-      {/* Portal halo ring */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -inset-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                   bg-[radial-gradient(circle_at_center,rgba(var(--gold-rgb),0.22),transparent_60%)]"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -inset-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700
-                   border border-[var(--color-gold)]/25"
-      />
-
-      {/* Sigil */}
-      <motion.img
-        src="/symbols/luma-sigil.svg"
-        alt="LUMA"
-        className="w-7 h-7 z-10"
-        animate={{ rotate: 360, opacity: [0.75, 1, 0.75] }}
-        transition={{
-          rotate: { duration: 28, repeat: Infinity, ease: "linear" },
-          opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-
-      {/* Tooltip */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-[48px] right-0 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0
-                   transition-all duration-300"
-      >
-        <div
-          className="rounded-xl border border-[var(--color-gold)]/20 bg-black/85 px-3 py-2 text-[10px] tracking-[0.2em] uppercase
-                     text-[var(--text-base)]/80 backdrop-blur-xl whitespace-nowrap"
-        >
-          Enter LUMA <span className="ml-1 opacity-80">↗</span>
-        </div>
-      </div>
-    </a>
   );
 }
