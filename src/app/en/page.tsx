@@ -169,6 +169,12 @@ export default function HomePage() {
           )}
         </p>
 
+        <p className="mt-4 text-sm md:text-base text-[var(--text-base)]/72">
+          {locale === "es"
+            ? "Sitios web rápidos + automatizaciones de IA calmadas (EN/ES)."
+            : "Fast websites + calm AI automations (EN/ES)."}
+        </p>
+
         {/* Micro-story */}
         <p className="max-w-2xl mt-6 text-[var(--text-base)]/75 leading-relaxed">
           {locale === "es" ? (
@@ -197,10 +203,10 @@ export default function HomePage() {
         {/* CTAs */}
         <div className="flex flex-wrap justify-center gap-4 mt-10">
           <Link
-            href={`/${locale}/services`}
+            href={`/${locale}/services#packages`}
             className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
           >
-            {locale === "es" ? "Explorar el trabajo" : "Explore the Work"}
+            {locale === "es" ? "Ver paquetes" : "View Packages"}
           </Link>
 
           <Link
@@ -367,7 +373,7 @@ export default function HomePage() {
             url: "https://nelsondario.com",
             sameAs: [
               "https://www.instagram.com/nelsondario.co",
-              "https://www.tiktok.com/@conversationswithlumina",
+              "https://www.youtube.com/@NelsonDario",
               "https://www.youtube.com/@NelsonDario",
             ],
             knowsAbout: [

@@ -74,12 +74,16 @@ export default function HomePageEs() {
           una realidad que honre al alma.
         </p>
 
+        <p className="mt-4 text-sm md:text-base text-[var(--text-base)]/72">
+          Sitios web rápidos + automatizaciones de IA calmadas (EN/ES).
+        </p>
+
         <div className="flex flex-wrap justify-center gap-4 mt-10">
           <Link
-            href="/es/services"
+            href="/es/services#packages"
             className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
           >
-            Explorar servicios
+            Ver paquetes
           </Link>
           <Link
             href="/es/book"
@@ -225,9 +229,9 @@ export default function HomePageEs() {
             url: "https://nelsondario.com/es",
             inLanguage: "es",
             sameAs: [
-              "https://www.instagram.com/conversationswithlumina",
-              "https://www.facebook.com/conversationswithlumina",
-              "https://www.tiktok.com/@conversationswithlumina",
+              "https://www.instagram.com/nelsondario.co",
+              "https://www.youtube.com/@NelsonDario",
+              "https://www.youtube.com/@NelsonDario",
             ],
             knowsAbout: [
               "Diseño Humano",

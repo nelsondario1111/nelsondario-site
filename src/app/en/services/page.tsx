@@ -9,10 +9,9 @@ import ToContactButtons from "@/components/ToContactButtons";
  * ✦ NelsonDario.com — Services Page ✦
  * Audience: The Sensitive Visionary, The Awakening Professional.
  * Updates:
- * - Removed QHHT offering language
- * - Added Soul Regression & Higher Self Hypnotherapy (Nelson-developed, QHHT-inspired)
- * - Added integrity line + For/Not For filter block
- * - Refined "Ask Lumina" to be clearly talk-based guidance (not trance)
+ * - Productized pathways for web design + AI automations
+ * - Intensives and digital products for scalable support
+ * - Deep-work section retained with clear integrity language
  */
 
 type Service = {
@@ -182,18 +181,18 @@ const guidanceServices: Service[] = [
     btnText: "Map Your Design",
   },
   {
-    title: "Ask Lumina Sessions",
+    title: "Strategy Clarity Sessions",
     tag: "The Clarity",
-    desc: "A safe harbor for your biggest questions. You, me, and Lumina exploring your awakening with discernment, sovereignty, and grounded next steps.",
+    desc: "Focused decision-making support to align offers, messaging, and operating priorities with your real capacity.",
     bullets: [
-      "Talk-based clarity (not trance).",
-      "Discernment for star origins, entities, and 5D themes.",
-      "Nervous system grounding + energetic hygiene.",
-      "Practical integration steps for daily life.",
+      "Talk-based strategy session (not trance).",
+      "Offer and positioning refinement for current market reality.",
+      "Weekly execution priorities and decision filters.",
+      "Simple systems guidance for sustainable delivery.",
       "Available in English or Spanish.",
     ],
-    link: "/en/contact?topic=conversations",
-    btnText: "Ask Lumina",
+    link: "/en/contact?topic=intensive",
+    btnText: "Book Strategy Session",
   },
 ];
 
@@ -340,7 +339,7 @@ export default function ServicesPage() {
 
       {/* 🜁 WAYS TO WORK TOGETHER */}
       <motion.section
-        id="ways-to-work"
+        id="packages"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85 }}
@@ -350,7 +349,7 @@ export default function ServicesPage() {
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-12">
             <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              Ecosystem Offers
+              Core Offers
             </p>
             <h2 className="section-title mb-3">Ways to Work Together</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
@@ -394,7 +393,7 @@ export default function ServicesPage() {
         </div>
       </motion.section>
 
-      {/* 🜃 DIGITAL PRODUCTS + MEMBERSHIP */}
+      {/* 🜃 DIGITAL PRODUCTS */}
       <motion.section
         id="digital-products"
         initial={{ opacity: 0, y: 40 }}
@@ -422,9 +421,9 @@ export default function ServicesPage() {
 
           <div className="mt-8 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/70 p-6 text-center">
             <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-base)]/60 mb-2">
-              Recurring Support
+              Recurring Layer
             </p>
-            <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">Lumina Membership (Coming Soon)</h3>
+            <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">Calm Systems Membership (Coming Soon)</h3>
             <p className="text-sm text-[var(--text-base)]/75 mb-4">
               A recurring space for monthly integration, implementation support, and calm accountability.
             </p>

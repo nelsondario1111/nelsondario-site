@@ -223,9 +223,8 @@ export default function HomePage() {
               "Helping sensitive visionaries and leaders bridge technology, human design, and spiritual awakening.",
             url: "https://nelsondario.com",
             sameAs: [
-              "https://www.instagram.com/conversationswithlumina",
-              "https://www.facebook.com/conversationswithlumina",
-              "https://www.tiktok.com/@conversationswithlumina",
+              "https://www.instagram.com/nelsondario.co",
+              "https://www.youtube.com/@NelsonDario",
             ],
             knowsAbout: [
               "Human Design",

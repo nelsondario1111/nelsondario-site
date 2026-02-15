@@ -200,9 +200,9 @@ export default function HomePage() {
               "Designer, Conscious Coach, and Awakening Guide blending technology and spirituality.",
             url: "https://nelsondario.com",
             sameAs: [
-              "https://www.instagram.com/conversationswithlumina",
-              "https://www.facebook.com/conversationswithlumina",
-              "https://www.tiktok.com/@conversationswithlumina",
+              "https://www.instagram.com/nelsondario.co",
+              "https://www.youtube.com/@NelsonDario",
+              "https://www.youtube.com/@NelsonDario",
             ],
           }),
         }}

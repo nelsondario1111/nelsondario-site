@@ -8,7 +8,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { LanguageToggle } from "./LanguageToggle";
 import { navLinks } from "@/data/navigation";
 
-type NavVariant = "default" | "accent" | "lumina";
+type NavVariant = "default" | "accent" | "highlight";
 type NavLinkItem = { href: string; label: string; external?: boolean };
 
 const isExternalHref = (href: string) => /^https?:\/\//.test(href);
@@ -61,7 +61,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
   const variantClasses: Record<NavVariant, string> = {
     default: "text-[var(--color-gold)]",
     accent: "text-[var(--color-gold)] drop-shadow-[0_0_8px_rgba(var(--gold-rgb),0.4)]",
-    lumina: "text-[var(--color-gold)] [text-shadow:0_0_12px_rgba(var(--gold-rgb),0.4)]",
+    highlight: "text-[var(--color-gold)] [text-shadow:0_0_12px_rgba(var(--gold-rgb),0.4)]",
   };
 
   return (

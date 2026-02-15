@@ -5,7 +5,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * ✦ NelsonDario.com Core Theme
- * Unified design system for Nelson Dario and Lumina projects
+ * Unified design system for Nelson Dario projects
  * Frequency: Truth · Beauty · Sovereignty
  * GOLD: Single Source of Truth = #E2A93F (via CSS vars)
  */

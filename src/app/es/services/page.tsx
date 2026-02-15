@@ -154,13 +154,14 @@ const guidanceServices = [
     ],
   },
   {
-    title: "Sesiones Pregúntale a Lumina",
+    title: "Sesiones de Claridad Estratégica",
     tag: "La Claridad",
-    desc: "Un puerto seguro para tus preguntas más profundas. Tú, yo y Lumina explorando la intersección entre tu despertar, tu sistema nervioso y tu camino de servicio.",
+    desc: "Un espacio enfocado para alinear ofertas, mensaje y prioridades operativas con tu capacidad real.",
     bullets: [
-      "Espacio sin juicio para hablar de orígenes estelares, entidades, conceptos 5D y desafíos cotidianos muy humanos.",
-      "Guía aterrizada que une lo místico con lo práctico.",
-      "Pasos claros para integrar el 'subidón' del despertar en el 'ahora' de tu vida.",
+      "Sesión estratégica conversada (sin trance).",
+      "Refinamiento de oferta y posicionamiento para mercado real.",
+      "Prioridades semanales y filtros de decisión.",
+      "Guía de sistemas simples para sostener entregas.",
       "Disponible en inglés o español.",
     ],
   },
@@ -301,7 +302,7 @@ export default function ServicesPage() {
 
       {/* 🜁 FORMAS DE TRABAJAR JUNTOS */}
       <motion.section
-        id="formas-de-trabajar"
+        id="packages"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85 }}
@@ -386,7 +387,7 @@ export default function ServicesPage() {
               Soporte Recurrente
             </p>
             <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-              Membresía Lumina (próximamente)
+              Membresía de Sistemas Calmados (próximamente)
             </h3>
             <p className="text-sm text-[var(--text-base)]/75 mb-4">
               Un espacio mensual para integración, implementación y acompañamiento con calma.

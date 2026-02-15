@@ -62,7 +62,7 @@ export function Footer() {
             <Link href={`/${locale}/book`} className="btn-primary text-[11px] px-4 py-2">
               {isSpanish ? "Reservar" : "Book"}
             </Link>
-            <a href="#subscribe-lumina" className="btn-outline text-[11px] px-4 py-2">
+            <a href="#subscribe-updates" className="btn-outline text-[11px] px-4 py-2">
               {isSpanish ? "Suscribirme" : "Subscribe"}
             </a>
           </div>
@@ -114,7 +114,7 @@ export function Footer() {
           {[
             { href: "/services", en: "Services", es: "Servicios" },
             { href: "/resources", en: "Resources", es: "Recursos" },
-            { href: "/conversations", en: "Conversations with Lumina", es: "Conversaciones con Lumina" },
+            { href: "/conversations", en: "Insights", es: "Biblioteca" },
             { href: "/contact", en: "Contact", es: "Contacto" },
           ].map((item) => {
             const url = `/${locale}${item.href}`;
@@ -147,7 +147,6 @@ export function Footer() {
           <div className="flex gap-5">
             {[
               { href: "https://www.instagram.com/nelsondario.co", icon: "bi-instagram", label: "Instagram" },
-              { href: "https://www.tiktok.com/@conversationswithlumina", icon: "bi-tiktok", label: "TikTok" },
               { href: "https://www.youtube.com/@NelsonDario", icon: "bi-youtube", label: "YouTube" },
             ].map(({ href, icon, label }) => (
               <a
@@ -165,12 +164,12 @@ export function Footer() {
           </div>
 
           <p className="text-xs opacity-70 text-center md:text-right">
-            {isSpanish ? "Sígueme y únete a la conversación" : "Follow and join the conversation"}
+            {isSpanish ? "Sígueme para ideas prácticas y actualizaciones" : "Follow for practical insights and updates"}
           </p>
 
-          <div className="w-full max-w-sm mt-2" id="subscribe-lumina">
+          <div className="w-full max-w-sm mt-2" id="subscribe-updates">
             <SubscribeForm
-              label={isSpanish ? "Suscríbete a Lumina" : "Subscribe to Lumina"}
+              label={isSpanish ? "Suscríbete para actualizaciones" : "Subscribe for updates"}
               placeholder={isSpanish ? "Tu correo electrónico" : "Your email address"}
               buttonText={isSpanish ? "Unirme" : "Join"}
             />
@@ -207,7 +206,6 @@ export function Footer() {
             url: "https://nelsondario.com",
             sameAs: [
               "https://www.instagram.com/nelsondario.co",
-              "https://www.tiktok.com/@conversationswithlumina",
               "https://www.youtube.com/@NelsonDario",
             ],
           }),

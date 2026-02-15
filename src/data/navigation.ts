@@ -19,14 +19,14 @@ export const navLinks: Record<"en" | "es", NavLink[]> = {
   en: [
     { href: "/en/services", label: "Services" },
     { href: "/en/resources", label: "Resources" },
-    { href: "/en/conversations", label: "Conversations with Lumina" },
+    { href: "/en/conversations", label: "Insights" },
     { href: "/en/contact", label: "Contact" },
   ],
 
   es: [
     { href: "/es/services", label: "Servicios" },
     { href: "/es/resources", label: "Recursos" },
-    { href: "/es/conversations", label: "Conversaciones con Lumina" },
+    { href: "/es/conversations", label: "Biblioteca" },
     { href: "/es/contact", label: "Contacto" },
   ],
 };

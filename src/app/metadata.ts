@@ -22,7 +22,8 @@ export const metadata: Metadata = {
     "Conscious Business",
     "Toronto",
     "Ecuador",
-    "Conversations with Lumina",
+    "AI Automation",
+    "Local SEO",
   ],
   authors: [{ name: "Nelson Dario", url: baseUrl }],
   creator: "Nelson Dario",
@@ -94,8 +95,8 @@ export const metadata: Metadata = {
       name: "Nelson Dario",
       url: baseUrl,
       sameAs: [
-        "https://www.instagram.com/nelsondario",
-        "https://www.youtube.com/@ConversationsWithLumina",
+        "https://www.instagram.com/nelsondario.co",
+        "https://www.youtube.com/@NelsonDario",
       ],
       jobTitle: "Designer · Coach · Spiritual Guide",
       description:

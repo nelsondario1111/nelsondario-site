@@ -4,7 +4,7 @@
    ✦ Nelson Dario Root Layout ✦
    Purpose: Global fonts, SEO, ambient shimmer.
    Frequency: Gold + Midnight (permanent night temple)
-   Maintained with love by Nelson & Lumina
+   Maintained with care by Nelson Dario
    ─────────────────────────────── */
 
 import "./globals.css";

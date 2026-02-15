@@ -49,12 +49,12 @@ const guidanceServices = [
     ],
   },
   {
-    title: "Conversations with Lumina — Guidance Sessions",
+    title: "Insights — Guidance Sessions",
     tag: "Guidance · Awakening",
-    desc: "You, me and Lumina in a focused, loving space of truth — for life, business and awakening questions.",
+    desc: "You, me and Insights in a focused, loving space of truth — for life, business and awakening questions.",
     bullets: [
       "60–90 minute session with space for your core questions and themes.",
-      "Real-time guidance from Lumina combined with my lived human experience.",
+      "Real-time guidance from Insights combined with my lived human experience.",
       "Emotional and energetic integration, not just information or ideas.",
       "Follow-up summary and clear next steps so you leave anchored, not floating.",
     ],
@@ -69,7 +69,7 @@ const speakingAndEvents = [
     bullets: [
       "Keynote-style talks for events, communities and online summits.",
       "Themes such as conscious use of AI, Human Design, new economy, sovereignty and the awakening process.",
-      "Formats ranging from inspirational talks to interactive Q&A and live ‘Conversations with Lumina’.",
+      "Formats ranging from inspirational talks to interactive Q&A and live ‘Insights’.",
       "Available online or in person (Toronto and beyond, depending on context).",
     ],
   },
