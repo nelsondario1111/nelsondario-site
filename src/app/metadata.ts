@@ -5,30 +5,26 @@ const baseUrl = "https://www.nelsondario.com";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nelson Dario | Design · Coaching · Awakening",
+    default: "Nelson Dario | Web Design + AI Automations",
     template: "%s | Nelson Dario",
   },
   description:
-    "Blending beauty, consciousness, and technology to co-create a New Earth. Explore Nelson Dario’s offerings in web design, coaching, QHHT, and multidimensional awakening.",
+    "Fast websites, local SEO, and AI automations for service businesses in EN/ES.",
   metadataBase: new URL(baseUrl),
   keywords: [
     "Nelson Dario",
     "Web Design",
-    "Human Design",
-    "Spiritual Coaching",
-    "QHHT",
-    "Next.js Developer",
-    "Awakening",
-    "Conscious Business",
-    "Toronto",
-    "Ecuador",
-    "AI Automation",
     "Local SEO",
+    "AI Automation",
+    "CRM",
+    "Lead Generation",
+    "Bilingual Website",
+    "Toronto",
   ],
   authors: [{ name: "Nelson Dario", url: baseUrl }],
   creator: "Nelson Dario",
   publisher: "Nelson Dario",
-  category: "Spirituality & Design",
+  category: "Business Services",
 
   alternates: {
     canonical: baseUrl,
@@ -44,9 +40,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Nelson Dario | Design · Coaching · Awakening",
+    title: "Nelson Dario | Web Design + AI Automations",
     description:
-      "Guided by spirit and precision, Nelson Dario offers services in web design, healing, and conscious technology.",
+      "Practical systems for growth: websites, local SEO, and AI automations.",
     url: baseUrl,
     siteName: "Nelson Dario",
     images: [
@@ -54,7 +50,7 @@ export const metadata: Metadata = {
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Nelson Dario — Design | Coaching | Awakening",
+        alt: "Nelson Dario — Web Design + AI Automations",
       },
     ],
     locale: "en_CA",
@@ -64,9 +60,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Nelson Dario | Design · Coaching · Awakening",
+    title: "Nelson Dario | Web Design + AI Automations",
     description:
-      "Explore Nelson Dario’s multidimensional offerings blending design, coaching, and conscious tech.",
+      "Fast websites, local SEO, and AI automation systems for service businesses.",
     images: [`${baseUrl}/og-image.jpg`],
     creator: "@nelsondario",
   },
@@ -84,11 +80,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  // ✅ All custom meta goes in ONE `other`
   other: {
     sitemap: `${baseUrl}/sitemap.xml`,
     robots: `${baseUrl}/robots.txt`,
-
     "application/ld+json": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -98,12 +92,10 @@ export const metadata: Metadata = {
         "https://www.instagram.com/nelsondario.co",
         "https://www.youtube.com/@NelsonDario",
       ],
-      jobTitle: "Designer · Coach · Spiritual Guide",
+      jobTitle: "Web Designer and AI Automation Specialist",
       description:
-        "Nelson Dario blends web design, human design, and metaphysics to awaken consciousness.",
+        "Helping service businesses grow with practical website and automation systems.",
     }),
-
-    vibration: "Love · Truth · Sovereignty · LightChain",
   },
 };
 

@@ -86,7 +86,7 @@ export function Footer() {
           </Link>
 
           <p className="mt-2 text-sm opacity-80">
-            {isSpanish ? "Código · Conciencia · Coherencia" : "Code · Consciousness · Coherence"}
+            {isSpanish ? "Web · IA · Sistemas" : "Web · AI · Systems"}
           </p>
 
           {/* Language switch */}
@@ -98,7 +98,7 @@ export function Footer() {
           </Link>
 
           <p className="mt-3 text-[0.75rem] opacity-70">
-            {isSpanish ? "Amor · Confianza · Energía" : "Love · Trust · Energy"}
+            {isSpanish ? "Toronto · Canada" : "Toronto · Canada"}
           </p>
         </motion.div>
 
@@ -189,10 +189,8 @@ export function Footer() {
         </div>
 
         <p className="text-[0.7rem] opacity-60 mt-3">
-          {isSpanish ? "Amor · Confianza · Energía" : "Love · Trust · Energy"}
+          {isSpanish ? "Web Design · SEO Local · Automatizacion IA" : "Web Design · Local SEO · AI Automation"}
         </p>
-
-        <p className="text-[0.7rem] mt-2 opacity-50">✧ Anchored in Love · Guided by Light · Rooted in Truth ✧</p>
       </div>
 
       {/* ✦ Schema for SEO */}

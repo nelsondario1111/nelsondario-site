@@ -4,14 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
 
-/**
- * ✦ NelsonDario.com — Página Inicio (ES) ✦
- * Frecuencia: Verdad · Belleza · Soberanía
- * Narrativa: Puente entre Tecnología y Espíritu.
- */
+const CALENDLY_URL = "https://calendly.com/nelson-samaniego0/30min";
 
-export default function HomePageEs() {
-  // ✧ Efecto de parallax para el fondo
+export default function BookPageEs() {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY * 0.15;
@@ -21,13 +16,24 @@ export default function HomePageEs() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      'script[src="https://assets.calendly.com/assets/external/widget.js"]'
+    );
+
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
     <main
-      aria-label="Contenido principal"
-      className="relative flex flex-col min-h-screen overflow-hidden
-                 bg-[var(--bg-base)] text-[var(--text-base)]"
+      aria-label="Reservar llamada"
+      className="relative flex flex-col min-h-screen overflow-hidden bg-[var(--bg-base)] text-[var(--text-base)]"
     >
-      {/* ✧ Fondo dorado con parallax */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 pointer-events-none"
@@ -39,7 +45,6 @@ export default function HomePageEs() {
         }}
       />
 
-      {/* ✧ Textura de estrellas */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20
@@ -47,230 +52,123 @@ export default function HomePageEs() {
                    [background-size:40px_40px] animate-[twinkle_12s_linear_infinite]"
       />
 
-      {/* 🜂 SECCIÓN HERO */}
       <motion.section
-        id="hero"
+        id="book-hero"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.1, ease: "easeOut" }}
-        className="flex flex-col items-center justify-center px-6 pt-24 pb-20 text-center
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="flex flex-col items-center justify-center px-6 pt-24 pb-16 text-center
                    bg-gradient-to-b from-[var(--bg-base)] via-[var(--bg-base)]
                    to-[color-mix(in_srgb,var(--bg-base)_80%,black)]"
       >
-        <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-4">
-          Nelson Dario
+        <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-3">
+          Reservas
         </p>
 
-        <h1 className="text-4xl md:text-6xl font-heading text-[var(--color-gold)] text-glow mb-6 leading-tight">
-          Código. Conciencia. <br className="hidden md:block" /> Coherencia.
+        <h1 className="text-3xl md:text-5xl font-heading text-[var(--color-gold)] text-glow mb-5 leading-tight">
+          Reserva una llamada estrategica
         </h1>
 
         <p className="max-w-2xl text-lg md:text-xl text-[var(--text-base)]/80 leading-relaxed">
-          Teniendo un puente entre{" "}
-          <span className="text-[var(--color-gold)]">Tecnología</span> y{" "}
-          <span className="text-[var(--color-gold)]">Espíritu</span>.
-          <br />
-          Para la persona visionaria y sensible que está lista para construir
-          una realidad que honre al alma.
+          Esta llamada sirve para revisar tu web, flujo de leads y prioridades de automatizacion.
+          Definimos tu mejor siguiente paso.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 mt-10">
-          <Link
-            href="/es/services"
-            className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
-          >
-            Explorar servicios
+        <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <Link href="/es/services#packages" className="btn-outline hover:scale-105 transform">
+            Ver paquetes
           </Link>
-          <Link
-            href="/es/book"
-            className="btn-outline hover:scale-105 transform"
-          >
-            Reservar Sesión de Resonancia
+          <Link href="/es/contact" className="btn-outline hover:scale-105 transform">
+            Prefieres escribir por correo?
           </Link>
         </div>
       </motion.section>
 
-      {/* Brillo divisorio */}
       <div
         aria-hidden="true"
-        className="h-12 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent"
+        className="h-10 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent"
       />
 
-      {/* 🜁 INTRO / MISIÓN */}
       <motion.section
-        id="mission"
+        id="book-main"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex flex-col items-center text-center py-24 px-6 bg-[var(--bg-base)]"
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.25 }}
+        className="px-6 pb-20 md:px-10"
       >
-        <h2 className="section-title">La Gran Integración</h2>
-        <p className="max-w-3xl text-[var(--text-base)]/80 text-lg leading-relaxed">
-          Estamos pasando de la era del &quot;Esfuerzo&quot; a la era de la
-          &quot;Alineación&quot;. Mi trabajo es ofrecerte la{" "}
-          <span className="font-semibold">estructura</span> (Web &amp; IA) y la{" "}
-          <span className="font-semibold">guía</span> (Sanación &amp; Estrategia)
-          que necesitas para navegar este cambio con soberanía y paz.
-        </p>
-      </motion.section>
+        <div className="max-w-5xl mx-auto grid gap-10 lg:grid-cols-[1.2fr,0.9fr] items-start">
+          <div
+            className="rounded-2xl border border-[var(--color-gold)]/25
+                       bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/90
+                       shadow-md backdrop-blur-md p-4 md:p-6"
+          >
+            <h2 className="section-title mb-3 text-left">Elige un horario</h2>
+            <p className="text-sm text-[var(--text-base)]/75 mb-4">
+              El calendario muestra disponibilidad actual en tu zona horaria.
+              Al reservar, recibiras confirmacion por correo con todos los detalles.
+            </p>
 
-      {/* Brillo divisorio */}
-      <div
-        aria-hidden="true"
-        className="h-12 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent"
-      />
+            <div
+              className="calendly-inline-widget w-full"
+              data-url={CALENDLY_URL}
+              style={{ minWidth: "320px", height: "760px" }}
+            />
 
-      {/* 🜃 TRES PILARES (alineados con Servicios) */}
-      <motion.section
-        id="pillars"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="grid md:grid-cols-3 gap-8 px-8 py-20
-                   bg-[color-mix(in_srgb,var(--bg-base)_82%,black)/0.9]
-                   backdrop-blur-md"
-      >
-        {[
-          {
-            title: "El Contenedor",
-            subtitle: "Diseño & IA",
-            desc: "Arquitectura digital sagrada. Sitios web y sistemas de IA que protegen tu tiempo y transmiten tu frecuencia.",
-            link: "/es/services#design-technology",
-          },
-          {
-            title: "El Mapa",
-            subtitle: "Diseño Humano",
-            desc: "Estrategia operativa para el alma. Comprender tu mecánica para liderar sin quemarte.",
-            link: "/es/services#guidance",
-          },
-          {
-            title: "El Alma",
-            subtitle: "Sanación profunda",
-            desc: "QHHT, regresión y guía metafísica para limpiar el ruido y recordar tus orígenes.",
-            link: "/es/services#deep-work",
-          },
-        ].map((pillar) => (
-          <Link href={pillar.link} key={pillar.title} className="block group">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="h-full p-8 border border-[var(--color-gold)]/20 rounded-2xl
-                         bg-[color-mix(in_srgb,var(--bg-base)_90%,black)]/40
-                         hover:border-[var(--color-gold)] hover:bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/60
-                         transition-all text-center shadow-md hover:shadow-lg flex flex-col items-center"
-            >
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-base)]/50 mb-3 group-hover:text-[var(--color-gold)] transition-colors">
-                {pillar.subtitle}
-              </p>
-              <h3 className="text-2xl font-heading text-[var(--color-gold)] mb-4 group-hover:text-glow transition-all">
-                {pillar.title}
+            <p className="mt-3 text-[11px] text-[var(--text-base)]/60">
+              Si el calendario no carga, abrelo directamente{" "}
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 decoration-[var(--color-gold)]/80"
+              >
+                en este enlace
+              </a>
+              .
+            </p>
+          </div>
+
+          <aside
+            className="rounded-2xl border border-[var(--text-base)]/15
+                       bg-[var(--bg-secondary)]/95 shadow-sm p-6 md:p-7 flex flex-col gap-6"
+          >
+            <div>
+              <h3 className="text-sm font-heading tracking-[0.22em] uppercase text-[var(--text-base)]/70 mb-3">
+                Que revisamos en la llamada
               </h3>
-              <p className="text-[var(--text-base)]/75 text-sm leading-relaxed mb-6">
-                {pillar.desc}
-              </p>
-              <span className="mt-auto text-xs border-b border-[var(--color-gold)]/30 pb-1 text-[var(--color-gold)]/80 group-hover:border-[var(--color-gold)] group-hover:text-[var(--color-gold)] transition-all">
-                Ver más
-              </span>
-            </motion.div>
-          </Link>
-        ))}
+              <ul className="text-sm text-[var(--text-base)]/80 space-y-2">
+                <li>1. Tu oferta actual y flujo de clientes.</li>
+                <li>2. Prioridades de sitio web para convertir mejor.</li>
+                <li>3. Oportunidades de automatizacion para intake y seguimiento.</li>
+                <li>4. Paquete y timeline recomendados para ejecutar.</li>
+              </ul>
+            </div>
+
+            <div className="border-t border-[var(--text-base)]/10 pt-4 space-y-3 text-sm text-[var(--text-base)]/80">
+              <p className="font-semibold text-[var(--text-base)]/85">Notas:</p>
+              <ul className="space-y-2">
+                <li>1. Las llamadas son online salvo coordinacion presencial en Toronto.</li>
+                <li>2. Tipo de sesion y duracion se ven en Calendly.</li>
+                <li>
+                  3. Si no ves un horario compatible, envia un{" "}
+                  <Link
+                    href="/es/contact"
+                    className="underline underline-offset-4 decoration-[var(--color-gold)]/80"
+                  >
+                    mensaje
+                  </Link>
+                  .
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-t border-[var(--text-base)]/10 pt-4 text-xs text-[var(--text-base)]/60 space-y-2">
+              <p>Todas las llamadas son confidenciales y enfocadas en siguientes pasos practicos.</p>
+            </div>
+          </aside>
+        </div>
       </motion.section>
-
-      {/* Brillo divisorio */}
-      <div
-        aria-hidden="true"
-        className="h-12 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent"
-      />
-
-      {/* 🜄 LLAMADO A LA ACCIÓN */}
-      <motion.section
-        id="cta"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="text-center py-24
-                   bg-gradient-to-t from-[color-mix(in_srgb,black_40%,var(--bg-base))]
-                   via-[var(--bg-base)] to-[var(--bg-base)]"
-      >
-        <h2 className="section-title">¿Por dónde empezamos?</h2>
-        <p className="text-[var(--text-base)]/80 mb-10 text-lg max-w-2xl mx-auto">
-          No tienes que navegar toda esta complejidad en soledad.
-          Busquemos juntos el hilo que te devuelve a la claridad.
-        </p>
-        <Link
-          href="/es/book"
-          className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
-        >
-          Reservar Sesión de Resonancia
-        </Link>
-      </motion.section>
-
-      {/* ✧ Frecuencia ambiental */}
-      <AmbientTone />
-
-      {/* ✧ Datos estructurados para SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Nelson Dario",
-            jobTitle: "Tecnólogo consciente & Guía",
-            description:
-              "Acompaño a visionarios y líderes sensibles a tender un puente entre tecnología, Diseño Humano y despertar espiritual.",
-            url: "https://nelsondario.com/es",
-            inLanguage: "es",
-            sameAs: [
-              "https://www.instagram.com/nelsondario.co",
-              "https://www.youtube.com/@NelsonDario",
-              "https://www.youtube.com/@NelsonDario",
-            ],
-            knowsAbout: [
-              "Diseño Humano",
-              "Desarrollo Web",
-              "Automatización con IA",
-              "QHHT",
-              "Conciencia",
-            ],
-          }),
-        }}
-      />
     </main>
   );
-}
-
-/* ───────────────────────────────
-   ✧ Componente de Tono Ambiental
-   ─────────────────────────────── */
-function AmbientTone() {
-  useEffect(() => {
-    let audio: HTMLAudioElement | null = null;
-
-    const playTone = () => {
-      if (!audio) {
-        audio = new Audio("/sounds/soft-tone.mp3");
-        audio.volume = 0.05; // muy sutil
-      }
-      audio.play().catch(() => {
-        // ignorar errores de autoplay o carga
-      });
-    };
-
-    // Reproducir una vez en el primer clic del usuario
-    window.addEventListener("click", playTone, { once: true });
-
-    return () => {
-      window.removeEventListener("click", playTone);
-      if (audio) {
-        audio.pause();
-        audio = null;
-      }
-    };
-  }, []);
-
-  return null;
 }

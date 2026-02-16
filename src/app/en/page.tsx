@@ -200,7 +200,7 @@ export default function HomePage() {
             href={`/${locale}/book`}
             className="btn-outline hover:scale-105 transform"
           >
-            {locale === "es" ? "Reservar Sesión de Resonancia" : "Book a Resonance Check"}
+            {locale === "es" ? "Reservar llamada estratégica" : "Book a Strategy Call"}
           </Link>
         </div>
 
@@ -328,7 +328,7 @@ export default function HomePage() {
             href={`/${locale}/book`}
             className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
           >
-            {locale === "es" ? "Reservar" : "Book a Resonance Check"}
+            {locale === "es" ? "Reservar llamada estratégica" : "Book a Strategy Call"}
           </Link>
 
           <Link

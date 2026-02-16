@@ -5,11 +5,16 @@ import Link from "next/link";
 import { useEffect } from "react";
 import ToContactButtons from "@/components/ToContactButtons";
 
-/**
- * ✦ NelsonDario.com — Página de Servicios (ES) ✦
- * Audiencia: La persona visionaria sensible, el profesional en despertar, el alma antigua.
- * Tono: Cálido, aterrizado, seguro, de alta frecuencia.
- */
+type Service = {
+  title: string;
+  subtitle?: string;
+  tag: string;
+  desc: string;
+  bullets: string[];
+  link: string;
+  btnText: string;
+  isCollab?: boolean;
+};
 
 type ProductizedPackage = {
   title: string;
@@ -35,64 +40,64 @@ type DigitalProduct = {
 const productizedPackages: ProductizedPackage[] = [
   {
     title: "Sitio Starter",
-    outcome: "Un sitio claro y calmado que genera clientes rápido.",
+    outcome: "Un sitio claro y calmado que genera clientes rapido.",
     inclusions: [
-      "Arquitectura de mensaje y páginas esenciales.",
-      "Base bilingüe preparada para EN/ES.",
-      "Implementación responsive priorizando mobile.",
-      "Flujo simple de contacto + guía de uso.",
+      "Mensajeria enfocada + arquitectura de pagina.",
+      "Paginas base listas para EN/ES.",
+      "Implementacion responsive mobile-first.",
+      "Flujo simple de contacto + guia de handoff.",
     ],
-    bestFor: "Nuevas ofertas, relanzamientos y primeras etapas de negocio.",
-    startingAt: "Desde …",
+    bestFor: "Nuevas ofertas, negocios en etapa inicial y relanzamientos limpios.",
+    startingAt: "Desde ...",
   },
   {
     title: "Sitio Growth + Sistema de Contenido",
     outcome: "Web + flujo de contenido que multiplica visibilidad y confianza.",
     inclusions: [
-      "Estructura de servicios y narrativa de crecimiento.",
-      "Base de recursos o artículos para autoridad.",
-      "SEO esencial + optimización de rendimiento.",
-      "Flujo editorial claro para consistencia.",
+      "Arquitectura expandida de servicios + narrativa.",
+      "Estructura de recursos/articulos para visibilidad constante.",
+      "SEO base + optimizacion de rendimiento.",
+      "Flujo editorial para publicar con consistencia.",
     ],
-    bestFor: "Fundadores que quieren crecer sin caer en sobrecarga.",
-    startingAt: "Desde …",
+    bestFor: "Founders listos para crecer autoridad sin sumar caos.",
+    startingAt: "Desde ...",
   },
   {
-    title: "Upgrade de Automatización",
+    title: "Upgrade de Automatizacion",
     outcome: "Seguimiento, formularios y agenda con IA calmada y sistemas limpios.",
     inclusions: [
-      "Recepción inicial con IA para primeros contactos.",
-      "Lógica de seguimiento dentro del CRM.",
-      "Automatizaciones de recordatorio y nurture.",
-      "Capacitación + playbook operativo.",
+      "Flujo de recepcion con IA para intake inicial.",
+      "Logica de seguimiento en CRM + plantillas de respuesta.",
+      "Automatizaciones para recordatorios y nurture.",
+      "Handoff al equipo + playbook operativo.",
     ],
-    bestFor: "Negocios de servicios que necesitan continuidad comercial.",
-    startingAt: "Desde …",
+    bestFor: "Negocios de servicios que necesitan captar y responder de forma confiable.",
+    startingAt: "Desde ...",
   },
 ];
 
 const intensiveOffers: IntensiveOffer[] = [
   {
-    title: "Business Clarity Intensive",
+    title: "Intensivo de Claridad de Negocio",
     duration: "90 min",
     summary:
-      "Un reset estratégico para definir tu siguiente oferta, mensaje y plan de ejecución con claridad.",
-    bestFor: "Emprendedores en punto de inflexión que necesitan dirección concreta.",
+      "Reset estrategico enfocado para definir tu siguiente oferta, mensaje y prioridades de ejecucion.",
+    bestFor: "Empresarios en punto de inflexion que necesitan direccion clara ahora.",
   },
   {
-    title: "AI + Brand Alignment Intensive",
+    title: "Intensivo IA + Alineacion de Marca",
     duration: "90 min",
     summary:
-      "Alinea tu marca, experiencia de cliente y stack de automatización para escalar sin perder alma.",
-    bestFor: "Equipos y líderes que buscan coherencia entre expansión y esencia.",
+      "Alinea voz de marca, experiencia de cliente y stack de automatizacion para escalar con consistencia.",
+    bestFor: "Equipos listos para crecer sin perder claridad operativa.",
   },
 ];
 
 const digitalProducts: DigitalProduct[] = [
   {
-    title: "Kit Web Bilingüe",
-    summary: "Estructura y textos para lanzar EN/ES sin fricción.",
-    format: "Plantillas + checklist",
+    title: "Kit Web Bilingue",
+    summary: "Estructura y textos para lanzar EN/ES sin friccion.",
+    format: "Templates + checklist",
   },
   {
     title: "Template para Contratistas",
@@ -100,103 +105,105 @@ const digitalProducts: DigitalProduct[] = [
     format: "Template + prompts de contenido",
   },
   {
-    title: "Planos de Automatización con IA",
-    summary: "Flujos para captación, seguimiento y gestión.",
-    format: "Blueprints + SOPs",
+    title: "Planos de Automatizacion con IA",
+    summary: "Flujos para captacion, seguimiento y gestion.",
+    format: "Blueprints + SOP base",
   },
 ];
 
-const designServices = [
+const webServices: Service[] = [
   {
-    title: "Espacios Digitales Sagrados (Web & Marca)",
-    tag: "El Contenedor",
-    desc: "Para sanadores y creadores conscientes. Un hogar digital que se siente como tu alma, respeta tu sistema nervioso y atrae a tu gente sin necesidad de gritar.",
+    title: "Construccion Web de Conversion",
+    subtitle: "Diseno Web + Rendimiento",
+    tag: "Core Build",
+    desc: "Sitios rapidos y claros, pensados para convertir trafico calificado en conversaciones agendadas.",
     bullets: [
-      "Exploración enfocada en tu firma energética, no solo en 'targets de marketing'.",
-      "Arquitectura a medida (Next.js) rápida, tranquila y libre de ruido y rastreos innecesarios.",
-      "Visuales que transmiten tu frecuencia antes de que se lea una sola palabra.",
-      "Soporte bilingüe (EN/ES) para conectar con toda tu familia global.",
+      "Arquitectura de paginas por intencion de compra.",
+      "Implementacion optimizada para mobile y trafico local.",
+      "Estructura de copy orientada a conversion.",
+      "Soporte bilingue (EN/ES).",
     ],
+    link: "/es/contact?topic=web-ai",
+    btnText: "Iniciar proyecto web",
   },
   {
-    title: "IA al Servicio de la Luz",
-    tag: "El Soporte",
-    desc: "Amas el potencial de la tecnología, pero te abruma el ruido. Creamos sistemas de IA suaves que sostienen el trabajo pesado para que tú puedas permanecer en el corazón.",
+    title: "SEO Local + Sistema de Contenido",
+    subtitle: "Visibilidad",
+    tag: "Growth",
+    desc: "Sistema practico de SEO local y contenido para que tu visibilidad crezca mes a mes.",
     bullets: [
-      "Automatizaciones que actúan como una 'capa protectora' alrededor de tu tiempo.",
-      "Asistentes de IA entrenados con tu voz y tus valores.",
-      "Configuraciones éticas que honran la privacidad y la soberanía.",
-      "Te enseño a usar estas herramientas sin sentirte 'desalmado/a'.",
+      "Estructura local de paginas de servicio + metadata.",
+      "Flujo de contenido realista para tu capacidad actual.",
+      "Medicion base para llamadas y formularios.",
+      "Ritmo de actualizacion sostenible para el equipo.",
     ],
+    link: "/es/contact?topic=local-seo",
+    btnText: "Mejorar visibilidad",
   },
   {
-    title: "Puentes Financieros Holísticos (con Fanny)",
-    tag: "Las Raíces",
-    desc: "Sanando la separación entre Espíritu y Dinero. Acompañamiento práctico y sin juicio para impuestos y finanzas, especialmente para emprendedores espirituales.",
+    title: "Soporte de Operaciones Financieras",
+    subtitle: "Con Fanny",
+    tag: "Colaboracion",
+    desc: "Soporte practico en orden financiero e impuestos para mantener la operacion limpia mientras crecen ingresos.",
     bullets: [
-      "Revisión de impuestos y organización financiera con una mirada compasiva (actualmente enfocada en Canadá / CRA).",
-      "Pasar de 'Escasez & Caos' a 'Administración & Orden'.",
-      "Comprender las reglas 3D para poder jugar con más libertad el juego 5D.",
+      "Revision operativa de impuestos (enfoque Canada/CRA).",
+      "Limpieza de procesos financieros base.",
+      "Apoyo para decisiones de crecimiento.",
     ],
-  },
-];
-
-const guidanceServices = [
-  {
-    title: "Diseño Humano para Almas Sensibles",
-    tag: "El Mapa",
-    desc: "No estás roto/a; simplemente estás diseñado/a diferente. Mapeamos tu mecánica para que dejes de luchar contra tu naturaleza y comiences a confiar en tu flujo.",
-    bullets: [
-      "Profundización en tu Tipo, Estrategia y Autoridad.",
-      "Enfoque específico en descondicionarte de la 'cultura del esfuerzo y la prisa'.",
-      "Entender tus puntos sensibles (Centros Abiertos) como sabiduría, no como debilidad.",
-      "Herramientas prácticas para tomar decisiones en un mundo caótico.",
-    ],
-  },
-  {
-    title: "Sesiones de Claridad Estratégica",
-    tag: "La Claridad",
-    desc: "Un espacio enfocado para alinear ofertas, mensaje y prioridades operativas con tu capacidad real.",
-    bullets: [
-      "Sesión estratégica conversada (sin trance).",
-      "Refinamiento de oferta y posicionamiento para mercado real.",
-      "Prioridades semanales y filtros de decisión.",
-      "Guía de sistemas simples para sostener entregas.",
-      "Disponible en inglés o español.",
-    ],
+    link: "/es/contact?topic=other",
+    btnText: "Explorar colaboracion",
+    isCollab: true,
   },
 ];
 
-const deepWork = [
+const automationServices: Service[] = [
   {
-    title: "Regresión del Alma e Hipnoterapia del Ser Superior",
-    tag: "La Profundidad",
-    desc: "Un portal de trance profundo para liberar patrones, recibir guía del Ser Superior y regresar a la coherencia.",
+    title: "Sistema IA de Intake + Seguimiento",
+    subtitle: "Automatizacion",
+    tag: "Client Flow",
+    desc: "Automatiza primera respuesta, calificacion y seguimiento para que los leads no se pierdan.",
     bullets: [
-      "Exploración regresiva (memoria simbólica, vidas pasadas o narrativa del alma).",
-      "Comunicación con el Ser Superior.",
-      "Liberación energética + integración aterrizada.",
-      "Contenedor presencial (Toronto) + cupos remotos limitados.",
+      "Intake unificado desde formularios y canales.",
+      "Secuencias de seguimiento para leads no agendados.",
+      "Logica de agenda segun tipo de servicio.",
+      "Plantillas de respuesta para velocidad y consistencia.",
     ],
+    link: "/es/contact?topic=web-ai",
+    btnText: "Automatizar captacion",
+  },
+  {
+    title: "Limpieza de CRM + Capa de Automatizacion",
+    subtitle: "Operaciones",
+    tag: "Sistemas",
+    desc: "Ordena tu CRM y conecta automatizaciones para quitar trabajo administrativo repetitivo.",
+    bullets: [
+      "Limpieza de pipeline y estandares de etapas.",
+      "Automatizacion de tareas y recordatorios.",
+      "Tracking de estado en todo el ciclo de lead.",
+      "Documentacion para handoff de equipo.",
+    ],
+    link: "/es/contact?topic=web-ai",
+    btnText: "Mejorar operaciones",
   },
 ];
 
-const speakingAndEvents = [
+const trainingServices: Service[] = [
   {
-    title: "Charlas, Retiros & Eventos Holísticos",
-    tag: "La Transmisión",
-    desc: "Tendiendo un puente entre el Mundo de la Tecnología y el Mundo del Espíritu a través de charlas, círculos y experiencias inmersivas.",
+    title: "Workshops + Entrenamiento de Equipo",
+    tag: "Enablement",
+    desc: "Sesiones practicas para alinear flujo de trabajo, automatizacion y estandares de entrega.",
     bullets: [
-      "Charlas para comunidades, podcasts y cumbres sobre IA Consciente, El Gran Cambio y Soberanía.",
-      "Círculos mensuales o estacionales, encuentros de sanación y eventos holísticos co-creados.",
-      "Futuros retiros que entrelazan movimiento, sonido, naturaleza y práctica espiritual profunda.",
-      "Cálido, con humor y aterrizado — sin 'vibras de gurú', solo transmisión de ser humano a ser humano.",
+      "Onboarding de flujos con IA para equipos.",
+      "Entrenamiento SOP para intake y seguimiento.",
+      "Workshops de implementacion de nuevos sistemas.",
+      "Q&A para casos limite y bloqueos de ejecucion.",
     ],
+    link: "/es/contact?topic=speaking-events",
+    btnText: "Solicitar workshop",
   },
 ];
 
-export default function ServicesPage() {
-  // ✧ Efecto de parallax
+export default function ServicesPageEs() {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY * 0.15;
@@ -209,10 +216,8 @@ export default function ServicesPage() {
   return (
     <main
       aria-label="Servicios"
-      className="relative flex flex-col min-h-screen overflow-hidden
-                 bg-[var(--bg-base)] text-[var(--text-base)]"
+      className="relative flex flex-col min-h-screen overflow-hidden bg-[var(--bg-base)] text-[var(--text-base)]"
     >
-      {/* ✧ Fondo dorado con parallax */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10 pointer-events-none"
@@ -224,62 +229,39 @@ export default function ServicesPage() {
         }}
       />
 
-      {/* ✧ Textura de estrellas */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20
-                   bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)]
-                   [background-size:40px_40px] animate-[twinkle_12s_linear_infinite]"
+        className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:40px_40px] animate-[twinkle_12s_linear_infinite]"
       />
 
-      {/* 🜂 HERO */}
       <motion.section
         id="services-hero"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.1, ease: "easeOut" }}
-        className="flex flex-col items-center justify-center px-6 py-28 text-center
-                   bg-gradient-to-b from-[var(--bg-base)] via-[var(--bg-base)]
-                   to-[color-mix(in_srgb,var(--bg-base)_80%,black)]"
+        className="flex flex-col items-center justify-center px-6 py-28 text-center bg-gradient-to-b from-[var(--bg-base)] via-[var(--bg-base)] to-[color-mix(in_srgb,var(--bg-base)_80%,black)]"
       >
-        <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-4">
-          Ofrecimientos & Portales
-        </p>
-
+        <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-4">Servicios</p>
         <h1 className="text-3xl md:text-5xl font-heading text-[var(--color-gold)] text-glow mb-6">
-          Un Puente Entre Mundos
+          Sistemas Web + Automatizacion para Crecer
         </h1>
 
         <p className="max-w-3xl text-lg md:text-xl text-[var(--text-base)]/80 leading-relaxed">
-          Para personas visionarias sensibles, profesionales en despertar y almas antiguas.
-          <br className="hidden md:block" />
-          Ofrezco una mezcla de{" "}
-          <span className="text-[var(--color-gold)]">Tecnología</span>,
-          <span className="text-[var(--color-gold)]"> Estrategia</span> y{" "}
-          <span className="text-[var(--color-gold)]"> Espíritu</span> para ayudarte
-          a construir una vida que honre tu alma — en línea y aquí en la Tierra, en Toronto.
+          Servicios practicos para negocios de servicios que necesitan mejor visibilidad, operaciones limpias y flujo constante de leads.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mt-10">
-          <Link
-            href="/es/book"
-            className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
-          >
-            Conectemos
+          <Link href="/es/services#packages" className="btn-primary hover:scale-105 transform hover:animate-pulseGlow">
+            Ver paquetes
           </Link>
-          <Link href="/es" className="btn-outline hover:scale-105 transform">
-            Volver al inicio
+          <Link href="/es/contact" className="btn-outline hover:scale-105 transform">
+            Hacer una pregunta
           </Link>
         </div>
       </motion.section>
 
-      {/* Brillo divisorio */}
-      <div
-        aria-hidden="true"
-        className="h-10 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent"
-      />
+      <div aria-hidden="true" className="h-10 bg-gradient-to-b from-transparent via-[var(--glow-color)]/12 to-transparent" />
 
-      {/* 🜁 FILOSOFÍA */}
       <motion.section
         id="services-overview"
         initial={{ opacity: 0, y: 40 }}
@@ -288,19 +270,13 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.3 }}
         className="flex flex-col items-center text-center py-16 px-6 bg-[var(--bg-base)]"
       >
-        <h2 className="section-title">No Tienes que Elegir</h2>
+        <h2 className="section-title">Construido para Ejecucion Real</h2>
         <p className="max-w-3xl text-[var(--text-base)]/80 text-lg leading-relaxed">
-          Muchos de nosotros nos sentimos divididos. Tenemos un &quot;Yo del Trabajo&quot; y
-          un &quot;Yo del Alma&quot;. <br />
-          Mi trabajo es disolver esa separación. Estemos construyendo una página web,
-          configurando un agente de IA o explorando una vida pasada, la intención es la misma:
-          <span className="font-semibold"> Soberanía, Coherencia y Amor.</span>{" "}
-          Algunos de estos portales son online, otros están enraizados en Toronto, pero todos están
-          diseñados para encontrarte exactamente donde estás.
+          El objetivo es simple: mejores leads, respuesta mas rapida y entrega mas limpia.
+          Combinamos web, SEO local y automatizacion para un crecimiento medible y sostenible.
         </p>
       </motion.section>
 
-      {/* 🜁 FORMAS DE TRABAJAR JUNTOS */}
       <motion.section
         id="packages"
         initial={{ opacity: 0, y: 40 }}
@@ -311,26 +287,23 @@ export default function ServicesPage() {
       >
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-12">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              Ecosistema de Ingresos
-            </p>
-            <h2 className="section-title mb-3">Formas de Trabajar Juntos</h2>
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">Ofertas Base</p>
+            <h2 className="section-title mb-3">Formas de trabajar juntos</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
-              Paquetes de alcance fijo para sostener flujo de caja con claridad y calma.
+              Paquetes de alcance fijo para crear momentum, claridad y flujo de caja consistente.
             </p>
           </header>
 
           <div className="grid gap-6 lg:grid-cols-3">
             {productizedPackages.map((pkg) => (
-              <ProductizedPackageCardEs key={pkg.title} item={pkg} />
+              <ProductizedPackageCard key={pkg.title} item={pkg} locale="es" />
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* 🜂 INTENSIVOS */}
       <motion.section
-        id="intensivos"
+        id="intensives"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85 }}
@@ -339,26 +312,23 @@ export default function ServicesPage() {
       >
         <div className="max-w-5xl mx-auto">
           <header className="text-center mb-10">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              Alta Profundidad
-            </p>
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">High-Touch</p>
             <h2 className="section-title mb-3">Intensivos</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
-              Contenedores opcionales de alto nivel para decisiones y alineación acelerada.
+              Opciones de alto nivel para acelerar decisiones y ejecucion.
             </p>
           </header>
 
           <div className="grid gap-6 md:grid-cols-2">
             {intensiveOffers.map((item) => (
-              <IntensiveCardEs key={item.title} item={item} />
+              <IntensiveCard key={item.title} item={item} locale="es" />
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* 🜃 PRODUCTOS DIGITALES + MEMBRESÍA */}
       <motion.section
-        id="productos-digitales"
+        id="digital-products"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85 }}
@@ -367,39 +337,21 @@ export default function ServicesPage() {
       >
         <div className="max-w-6xl mx-auto">
           <header className="text-center mb-10">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              Capa Semi-Pasiva
-            </p>
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">Capa Semi-Pasiva</p>
             <h2 className="section-title mb-3">Productos Digitales</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
-              Activos prácticos para implementar entre sesiones.
+              Activos practicos para implementar mas rapido entre sesiones.
             </p>
           </header>
 
           <div className="grid gap-6 md:grid-cols-3">
             {digitalProducts.map((item) => (
-              <DigitalProductCardEs key={item.title} item={item} />
+              <DigitalProductCard key={item.title} item={item} locale="es" />
             ))}
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/70 p-6 text-center">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-[var(--text-base)]/60 mb-2">
-              Soporte Recurrente
-            </p>
-            <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-              Membresía de Sistemas Calmados (próximamente)
-            </h3>
-            <p className="text-sm text-[var(--text-base)]/75 mb-4">
-              Un espacio mensual para integración, implementación y acompañamiento con calma.
-            </p>
-            <Link href="/es/resources#calm-systems-checklist" className="btn-outline hover:scale-105 transform">
-              Unirme a la lista
-            </Link>
           </div>
         </div>
       </motion.section>
 
-      {/* 🜃 TECNOLOGÍA / ARQUITECTURA */}
       <motion.section
         id="design-technology"
         initial={{ opacity: 0, y: 40 }}
@@ -408,60 +360,23 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.3 }}
         className="px-6 py-20 md:px-10 bg-[color-mix(in_srgb,var(--bg-base)_88%,black)]/95 backdrop-blur-md"
       >
-        <div className="max-w-5xl mx-auto">
-          <header className="text-center mb-10">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              El Contenedor
-            </p>
-            <h2 className="section-title mb-3">Tecnología & Diseño Consciente</h2>
+        <div className="max-w-6xl mx-auto">
+          <header className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">Web + Visibilidad</p>
+            <h2 className="section-title mb-3">Web y Sistemas de Crecimiento</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
-              La tecnología no debería drenarte. Debería sostenerte.
+              Primero construimos la base: claridad de oferta, paginas que convierten y visibilidad local.
             </p>
           </header>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {designServices.map((service) => (
-              <motion.article
-                key={service.title}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.25 }}
-                className="p-7 border border-[var(--color-gold)]/20 rounded-2xl
-                           bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/95
-                           shadow-md hover:border-[var(--color-gold)]
-                           hover:shadow-lg transition-all flex flex-col gap-4"
-              >
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-[var(--text-base)]/60 mb-2">
-                    {service.tag}
-                  </p>
-                  <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[var(--text-base)]/80 text-sm">{service.desc}</p>
-                </div>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--text-base)]/80">
-                  {service.bullets.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 text-[10px] text-[var(--color-gold)]">✦</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4">
-                  <Link
-                    href="/es/book"
-                    className="btn-primary text-[11px] px-4 py-2 hover:scale-105 transform inline-block"
-                  >
-                    Ver detalles
-                  </Link>
-                </div>
-              </motion.article>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {webServices.map((service) => (
+              <ServiceCard key={service.title} service={service} />
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* 🜄 GUÍA / MAPA */}
       <motion.section
         id="guidance"
         initial={{ opacity: 0, y: 40 }}
@@ -471,148 +386,47 @@ export default function ServicesPage() {
         className="px-6 py-20 md:px-10 bg-[var(--bg-base)]"
       >
         <div className="max-w-5xl mx-auto">
-          <header className="text-center mb-10">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              El Mapa
-            </p>
-            <h2 className="section-title mb-3">Alineación & Claridad</h2>
+          <header className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">Automatizacion</p>
+            <h2 className="section-title mb-3">Flujo de Clientes + Operaciones</h2>
             <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
-              Para cuando te sientes perdido/a en el ruido y necesitas volver a tu propia verdad.
+              Reemplaza cuellos de botella manuales con automatizaciones simples que tu equipo pueda mantener.
             </p>
           </header>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {guidanceServices.map((service) => (
-              <motion.article
-                key={service.title}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.25 }}
-                className="p-7 border border-[var(--color-gold)]/18 rounded-2xl
-                           bg-[var(--bg-base)] shadow-md
-                           hover:border-[var(--color-gold)]
-                           hover:shadow-lg transition-all flex flex-col gap-4"
-              >
-                <div>
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-[var(--text-base)]/60 mb-2">
-                    {service.tag}
-                  </p>
-                  <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[var(--text-base)]/80 text-sm">{service.desc}</p>
-                </div>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--text-base)]/80">
-                  {service.bullets.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 text-[10px] text-[var(--color-gold)]">✦</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4">
-                  <Link
-                    href="/es/book"
-                    className="btn-primary text-[11px] px-4 py-2 hover:scale-105 transform inline-block"
-                  >
-                    Reservar sesión
-                  </Link>
-                </div>
-              </motion.article>
+          <div className="grid gap-6 md:grid-cols-2">
+            {automationServices.map((service) => (
+              <ServiceCard key={service.title} service={service} />
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* 🜆 QHHT — TRABAJO PROFUNDO & COMUNIDAD */}
       <motion.section
-        id="deep-work"
+        id="operations"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="px-6 py-24 md:px-10 
-                   bg-gradient-to-t from-[color-mix(in_srgb,black_35%,var(--bg-base))]
-                   via-[var(--bg-base)] to-[var(--bg-base)]"
+        className="px-6 py-24 md:px-10 bg-gradient-to-t from-[color-mix(in_srgb,black_35%,var(--bg-base))] via-[var(--bg-base)] to-[var(--bg-base)]"
       >
         <div className="max-w-5xl mx-auto">
           <header className="text-center mb-10">
-            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">
-              El Alma
+            <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-2">Enablement</p>
+            <h2 className="section-title mb-3">Entrenamiento + Implementacion</h2>
+            <p className="max-w-3xl mx-auto text-[var(--text-base)]/80">
+              Workshops y acompanamiento para asegurar que los sistemas realmente se usen.
             </p>
-            <h2 className="section-title mb-3">Sanación Profunda & Comunidad</h2>
           </header>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* QHHT */}
-            {deepWork.map((service) => (
-              <motion.article
-                key={service.title}
-                className="p-7 border border-[var(--color-gold)]/20 rounded-2xl
-                           bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/95
-                           flex flex-col gap-4"
-              >
-                <div>
-                  <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[var(--text-base)]/80 text-sm">{service.desc}</p>
-                </div>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--text-base)]/80">
-                  {service.bullets.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 text-[10px] text-[var(--color-gold)]">✦</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4 flex items-center gap-3 flex-wrap">
-                  <div className="inline-block px-3 py-1 border border-[var(--color-gold)]/30 rounded text-[10px] tracking-wider uppercase">
-                    Solo lista de espera
-                  </div>
-                  <span className="text-[11px] text-[var(--text-base)]/70">
-                    Únete a la lista y sentiremos juntos cuándo es el momento adecuado.
-                  </span>
-                </div>
-              </motion.article>
-            ))}
-
-            {/* Charlas / Eventos */}
-            {speakingAndEvents.map((service) => (
-              <motion.article
-                key={service.title}
-                className="p-7 border border-[var(--color-gold)]/20 rounded-2xl
-                           bg-[color-mix(in_srgb,var(--bg-base)_92%,black)]/95
-                           flex flex-col gap-4"
-              >
-                <div>
-                  <h3 className="text-xl font-heading text-[var(--color-gold)] mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-[var(--text-base)]/80 text-sm">{service.desc}</p>
-                </div>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--text-base)]/80">
-                  {service.bullets.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 text-[10px] text-[var(--color-gold)]">✦</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4">
-                  <Link
-                    href="/es/contact"
-                    className="btn-outline text-[11px] px-4 py-2 inline-block"
-                  >
-                    Consultar
-                  </Link>
-                </div>
-              </motion.article>
+          <div className="grid gap-6 md:grid-cols-1">
+            {trainingServices.map((service) => (
+              <ServiceCard key={service.title} service={service} />
             ))}
           </div>
         </div>
       </motion.section>
 
-      {/* 🜇 CTA FINAL */}
       <motion.section
         id="services-cta"
         initial={{ opacity: 0, y: 40 }}
@@ -621,18 +435,13 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.3 }}
         className="text-center py-20 px-6 bg-[var(--bg-base)]"
       >
-        <h2 className="section-title mb-4">Empieza Donde Estás</h2>
+        <h2 className="section-title mb-4">Empieza Donde Estas</h2>
         <p className="text-[var(--text-base)]/80 mb-8 text-lg max-w-2xl mx-auto">
-          Ya sea que necesites ordenar tu proyecto, sanar tu corazón o simplemente sentarte con
-          alguien que entienda ambos tiempos —estelar y humano— aquí estoy.
-          Si aún no sabes qué portal encaja mejor, podemos sentirlo juntos en nuestra primera conversación.
+          Si quieres sistemas mas limpios y mejor flujo de leads, podemos definir tu siguiente paso hoy.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/es/book"
-            className="btn-primary hover:scale-105 transform hover:animate-pulseGlow"
-          >
-            Reservar Sesión de Resonancia
+          <Link href="/es/book" className="btn-primary hover:scale-105 transform hover:animate-pulseGlow">
+            Reservar llamada estrategica
           </Link>
           <ToContactButtons />
         </div>
@@ -646,12 +455,12 @@ export default function ServicesPage() {
             "@type": "ProfessionalService",
             name: "Nelson Dario",
             url: "https://nelsondario.com/es/services",
-            areaServed: ["Toronto", "Canadá", "Remoto"],
+            areaServed: ["Toronto", "Canada", "Remoto"],
             serviceType: [
-              "Diseño Web",
-              "Automatización con IA",
-              "Guía de Diseño Humano",
-              "Hipnoterapia del Ser Superior",
+              "Diseno Web",
+              "SEO Local",
+              "Automatizacion con IA",
+              "Sistemas CRM",
               "Intensivos de Negocio",
             ],
           }),
@@ -661,7 +470,59 @@ export default function ServicesPage() {
   );
 }
 
-function ProductizedPackageCardEs({ item }: { item: ProductizedPackage }) {
+function ServiceCard({ service }: { service: Service }) {
+  return (
+    <motion.article
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.25 }}
+      className={`p-7 rounded-2xl border flex flex-col gap-4 relative overflow-hidden h-full
+                 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/90 backdrop-blur-sm
+                 shadow-md hover:shadow-lg transition-all
+                 ${
+                   service.isCollab
+                     ? "border-[var(--color-gold)]/40"
+                     : "border-[var(--color-gold)]/20 hover:border-[var(--color-gold)]"
+                 }
+                 `}
+    >
+      {service.isCollab && (
+        <div className="absolute top-0 right-0 bg-[var(--color-gold)]/10 text-[var(--color-gold)] text-[9px] uppercase tracking-wider px-3 py-1 rounded-bl-lg border-b border-l border-[var(--color-gold)]/20">
+          Colab
+        </div>
+      )}
+
+      <div>
+        <p className="text-[10px] uppercase tracking-[0.25em] text-[var(--text-base)]/60 mb-2">{service.tag}</p>
+
+        <h3 className="text-xl font-heading text-[var(--color-gold)] mb-1">{service.title}</h3>
+
+        {service.subtitle && (
+          <p className="text-xs uppercase tracking-wider text-[var(--text-base)]/50 mb-2">{service.subtitle}</p>
+        )}
+
+        <p className="text-[var(--text-base)]/80 text-sm leading-relaxed mt-2">{service.desc}</p>
+      </div>
+
+      <ul className="mt-2 space-y-2 text-sm text-[var(--text-base)]/70 flex-grow">
+        {service.bullets.map((item) => (
+          <li key={item} className="flex gap-2 items-start">
+            <span className="mt-[5px] w-1 h-1 rounded-full bg-[var(--color-gold)] shrink-0 opacity-70"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-6 pt-4 border-t border-[var(--text-base)]/5">
+        <Link href={service.link} className="text-[11px] uppercase tracking-widest font-semibold flex items-center gap-2 group text-[var(--color-gold)]">
+          <span>{service.btnText}</span>
+          <span className="group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
+
+function ProductizedPackageCard({ item, locale }: { item: ProductizedPackage; locale: "en" | "es" }) {
   return (
     <motion.article
       whileHover={{ scale: 1.02 }}
@@ -686,15 +547,13 @@ function ProductizedPackageCardEs({ item }: { item: ProductizedPackage }) {
         {item.bestFor}
       </p>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[var(--color-gold)]/85">
-        {item.startingAt}
-      </p>
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[var(--color-gold)]/85">{item.startingAt}</p>
 
       <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10 flex flex-wrap gap-2">
-        <Link href="/es/book" className="btn-primary text-[11px] px-4 py-2">
-          Reservar Sesión de Resonancia
+        <Link href={`/${locale}/book`} className="btn-primary text-[11px] px-4 py-2">
+          Reservar llamada estrategica
         </Link>
-        <Link href="/es/contact" className="btn-outline text-[11px] px-4 py-2">
+        <Link href={`/${locale}/contact`} className="btn-outline text-[11px] px-4 py-2">
           Hacer una pregunta
         </Link>
       </div>
@@ -702,7 +561,7 @@ function ProductizedPackageCardEs({ item }: { item: ProductizedPackage }) {
   );
 }
 
-function IntensiveCardEs({ item }: { item: IntensiveOffer }) {
+function IntensiveCard({ item, locale }: { item: IntensiveOffer; locale: "en" | "es" }) {
   return (
     <motion.article
       whileHover={{ scale: 1.01 }}
@@ -717,15 +576,15 @@ function IntensiveCardEs({ item }: { item: IntensiveOffer }) {
       </p>
 
       <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
-        <Link href="/es/contact?topic=intensivo" className="btn-outline text-[11px] px-4 py-2">
-          Aplicar / Solicitar invitación
+        <Link href={`/${locale}/contact?topic=intensive`} className="btn-outline text-[11px] px-4 py-2">
+          Aplicar / Solicitar invitacion
         </Link>
       </div>
     </motion.article>
   );
 }
 
-function DigitalProductCardEs({ item }: { item: DigitalProduct }) {
+function DigitalProductCard({ item, locale }: { item: DigitalProduct; locale: "en" | "es" }) {
   return (
     <motion.article
       whileHover={{ scale: 1.01 }}
@@ -736,8 +595,8 @@ function DigitalProductCardEs({ item }: { item: DigitalProduct }) {
       <h3 className="text-lg font-heading text-[var(--color-gold)] mb-3">{item.title}</h3>
       <p className="text-sm text-[var(--text-base)]/75">{item.summary}</p>
       <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10">
-        <Link href="/es/resources#calm-systems-checklist" className="btn-outline text-[11px] px-4 py-2">
-          Unirme a la lista
+        <Link href={`/${locale}/resources#resource-waitlist`} className="btn-outline text-[11px] px-4 py-2">
+          Unirme a lista de espera
         </Link>
       </div>
     </motion.article>

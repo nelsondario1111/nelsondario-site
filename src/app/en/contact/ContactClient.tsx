@@ -82,7 +82,7 @@ export default function ContactClient() {
                    to-[color-mix(in_srgb,var(--bg-base)_80%,black)]"
       >
         <p className="text-xs tracking-[0.3em] uppercase text-[var(--text-base)]/60 mb-3">
-          Contact · Resonance
+          Contact
         </p>
 
         <h1 className="text-3xl md:text-5xl font-heading text-[var(--color-gold)] text-glow mb-5 leading-tight">
@@ -337,7 +337,7 @@ export default function ContactClient() {
                   href="/en/book"
                   className="underline underline-offset-4 decoration-[var(--color-gold)]/80"
                 >
-                  Resonance Check
+                  Strategy Call
                 </Link>
                 .
               </p>

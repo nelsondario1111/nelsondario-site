@@ -441,7 +441,7 @@ export default function ServicesPage() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link href="/en/book" className="btn-primary hover:scale-105 transform hover:animate-pulseGlow">
-            Book a Resonance Check
+            Book a Strategy Call
           </Link>
           <ToContactButtons />
         </div>
@@ -551,7 +551,7 @@ function ProductizedPackageCard({ item, locale }: { item: ProductizedPackage; lo
 
       <div className="mt-6 pt-4 border-t border-[var(--text-base)]/10 flex flex-wrap gap-2">
         <Link href={`/${locale}/book`} className="btn-primary text-[11px] px-4 py-2">
-          Book a Resonance Check
+          Book a Strategy Call
         </Link>
         <Link href={`/${locale}/contact`} className="btn-outline text-[11px] px-4 py-2">
           Ask a question

@@ -95,8 +95,8 @@ const config: Config = {
 
       /* ✦ Fonts */
       fontFamily: {
-        heading: ["var(--font-heading)", "Playfair Display", "serif"],
-        sans: ["var(--font-sans)", "Lato", "sans-serif"],
+        heading: ["var(--font-heading)", "Sora", "sans-serif"],
+        sans: ["var(--font-sans)", "Source Sans 3", "sans-serif"],
       },
 
       /* ✦ Font Sizes */
@@ -176,6 +176,10 @@ const config: Config = {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        scrollPulse: {
+          "0%, 100%": { opacity: "1", filter: "saturate(1)" },
+          "50%": { opacity: "0.72", filter: "saturate(1.1)" },
+        },
       },
 
       animation: {
@@ -185,6 +189,7 @@ const config: Config = {
         pageFade: "pageFade 0.8s ease-in-out forwards",
         auricWave: "auricWave 14s ease-in-out infinite",
         shimmerFlow: "shimmerFlow 20s ease-in-out infinite",
+        scrollPulse: "scrollPulse 1.4s ease-in-out infinite",
       },
 
       /**

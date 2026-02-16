@@ -137,7 +137,7 @@ export default function ResourcesPage() {
             <article className="h-full p-6 rounded-2xl border border-[var(--color-gold)]/15 bg-[color-mix(in_srgb,var(--bg-base)_95%,black)]/85 shadow-sm hover:border-[var(--color-gold)] transition-all">
               <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-base)]/55 mb-2">Articles</p>
               <h3 className="text-lg font-heading text-[var(--color-gold)] mb-2">Long-Form Library</h3>
-              <p className="text-sm text-[var(--text-base)]/75">Explore long-form writing on clarity, systems, and conscious business.</p>
+              <p className="text-sm text-[var(--text-base)]/75">Explore long-form writing on clarity, systems, and business execution.</p>
             </article>
           </Link>
         </div>

@@ -22,14 +22,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
-  const [portalKey, setPortalKey] = useState(0);
-  const toggleMenu = () => {
-    setIsOpen((prev) => {
-      const next = !prev;
-      if (next) setPortalKey((k) => k + 1);
-      return next;
-    });
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   /* ✦ Data Setup */
   const allLinks = useMemo(() => navLinks[locale] as NavLinkItem[], [locale]);
@@ -142,7 +135,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
               </div>
 
               <div className={`leading-tight ${variantClasses[variant]}`}>
-                <span className="block font-heading text-lg md:text-xl font-bold tracking-wide uppercase">
+                <span className="block font-heading text-lg md:text-xl font-bold tracking-[0.02em]">
                   Nelson&nbsp;Dario
                 </span>
               </div>
@@ -209,28 +202,20 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            key={`menu-${portalKey}`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "100vh", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
             className="md:hidden fixed inset-x-0 top-[73px] bg-black/95 backdrop-blur-2xl"
           >
-            {/* ✦ Portal Open Header */}
-            <MobilePortalHeader
-              key={`portal-${portalKey}`}
-              locale={locale}
-              onClose={() => setIsOpen(false)}
-            />
-
-            <div className="flex flex-col gap-7 px-8 pb-12">
+            <div className="flex flex-col gap-7 px-8 pt-8 pb-12 overflow-y-auto h-full">
               <Link
                 href={`/${locale}/book`}
                 onClick={() => setIsOpen(false)}
                 className="rounded-2xl px-5 py-4 border border-[var(--color-gold)]/25 bg-[var(--color-gold)]/10
                            text-[var(--color-gold)] text-lg font-heading tracking-wide"
               >
-                {locale === "es" ? "Reservar (Resonancia)" : "Book (Resonance Check)"}
+                {locale === "es" ? "Reservar llamada estratégica" : "Book a Strategy Call"}
               </Link>
 
               {allLinks.map((link) => {
@@ -260,7 +245,7 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
 
               <div className="mt-2 flex flex-col gap-4">
                 <span className="text-xs uppercase tracking-widest opacity-40">
-                  {locale === "es" ? "Preferencias" : "Preferences"}
+                  {locale === "es" ? "Idioma" : "Language"}
                 </span>
                 <LanguageToggle />
               </div>
@@ -269,121 +254,6 @@ export function NavBar({ variant = "default" }: { variant?: NavVariant }) {
         )}
       </AnimatePresence>
     </motion.nav>
-  );
-}
-
-/* ✦ Portal Open animation (mobile) */
-function MobilePortalHeader({
-  locale,
-  onClose,
-}: {
-  locale: "en" | "es";
-  onClose: () => void;
-}) {
-  return (
-    <div className="relative px-8 pt-8 pb-6">
-      {/* Subtle portal mist behind */}
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 25%, rgba(var(--gold-rgb),0.14), transparent 55%)",
-        }}
-      />
-
-      {/* Close button */}
-      <button
-        type="button"
-        onClick={onClose}
-        className="absolute right-6 top-6 rounded-full border border-[var(--color-gold)]/20 bg-black/30 px-3 py-2
-                   text-[11px] uppercase tracking-[0.2em] text-[var(--text-base)]/70 hover:text-[var(--color-gold)]
-                   hover:border-[var(--color-gold)]/60 transition-all"
-        aria-label={locale === "es" ? "Cerrar menú" : "Close menu"}
-      >
-        {locale === "es" ? "Cerrar" : "Close"}
-      </button>
-
-      {/* Portal core */}
-      <div className="relative flex items-center gap-5">
-        <div className="relative w-14 h-14">
-          {/* Ring 1 */}
-          <motion.div
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full border border-[var(--color-gold)]/25"
-            initial={{ scale: 0.7, opacity: 0 }}
-            animate={{ scale: [0.7, 1.15, 1.05], opacity: [0, 1, 0.85] }}
-            transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
-          />
-          {/* Ring 2 */}
-          <motion.div
-            aria-hidden="true"
-            className="absolute -inset-2 rounded-full border border-[var(--color-gold)]/15"
-            initial={{ scale: 0.75, opacity: 0 }}
-            animate={{ scale: [0.75, 1.25, 1.15], opacity: [0, 0.9, 0.55] }}
-            transition={{ duration: 1.05, delay: 0.05, ease: [0.23, 1, 0.32, 1] }}
-          />
-          {/* Soft halo */}
-          <motion.div
-            aria-hidden="true"
-            className="absolute -inset-3 rounded-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0.7] }}
-            transition={{ duration: 1.0, delay: 0.08, ease: "easeOut" }}
-            style={{
-              background: "radial-gradient(circle at center, rgba(var(--gold-rgb),0.22), transparent 60%)",
-            }}
-          />
-
-          {/* Brand mark */}
-          <motion.img
-            src="/images/logo.png"
-            alt="Nelson Dario"
-            className="relative z-10 w-14 h-14"
-            initial={{ rotate: -30, opacity: 0, scale: 0.92 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-          />
-        </div>
-
-        <div className="flex-1">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            className="text-[12px] uppercase tracking-[0.28em] text-[var(--text-base)]/55"
-          >
-            {locale === "es" ? "Portal de Navegación" : "Navigation Portal"}
-          </motion.p>
-          <motion.h3
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12 }}
-            className="mt-1 font-heading text-[var(--color-gold)] text-xl"
-          >
-            {locale === "es" ? "Entra con intención" : "Enter with intention"}
-          </motion.h3>
-        </div>
-      </div>
-
-      {/* Beam line */}
-      <div aria-hidden="true" className="mt-6 h-[1px] w-full overflow-hidden">
-        <motion.div
-          className="h-full w-[40%]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(var(--gold-rgb),0.85), transparent)",
-          }}
-          initial={{ x: "-60%", opacity: 0 }}
-          animate={{ x: "180%", opacity: 1 }}
-          transition={{ duration: 0.9, ease: "linear" }}
-        />
-        <div className="h-[1px] w-full bg-[var(--color-gold)]/10 -mt-[1px]" />
-      </div>
-    </div>
   );
 }
 

@@ -1,29 +1,27 @@
 // src/app/layout.tsx
 
 /* ───────────────────────────────
-   ✦ Nelson Dario Root Layout ✦
-   Purpose: Global fonts, SEO, ambient shimmer.
-   Frequency: Gold + Midnight (permanent night temple)
-   Maintained with care by Nelson Dario
+   Nelson Dario Root Layout
+   Purpose: Global fonts and metadata
    ─────────────────────────────── */
 
 import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
-import { Lato, Playfair_Display } from "next/font/google";
+import { Sora, Source_Sans_3 } from "next/font/google";
 import { ClientRootShell } from "./ClientRootShell";
 
 /* ✧ Font setup */
-const lato = Lato({
+const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 });
 
-const playfair = Playfair_Display({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-heading",
 });
 
@@ -38,25 +36,25 @@ export const viewport: Viewport = {
 
 /* ✦ Metadata (can be adjusted or extended later) */
 export const metadata: Metadata = {
-  title: "Nelson Dario · Design | Coaching | Awakening",
+  title: "Nelson Dario · Web Design + AI Automations",
   description:
-    "Uniting consciousness, creativity, and technology — design for the awakening age.",
+    "Fast websites, local SEO, and AI automations for service businesses.",
   metadataBase: new URL("https://nelsondario.com"),
 
   // ❌ REMOVE themeColor from metadata (Next 16 warning)
   // themeColor: "#0a0a0f",
 
   openGraph: {
-    title: "Nelson Dario · Design | Coaching | Awakening",
+    title: "Nelson Dario · Web Design + AI Automations",
     description:
-      "Uniting consciousness, creativity, and technology — design for the awakening age.",
+      "Fast websites, local SEO, and AI automations for service businesses.",
     url: "https://nelsondario.com",
     images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nelson Dario",
-    description: "Truth · Beauty · Sovereignty · The fusion of light and design.",
+    description: "Web design, local SEO, and AI automations for business growth.",
   },
   icons: {
     icon: [
@@ -67,7 +65,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   other: {
-    "frequency-signature": "Truth · Beauty · Sovereignty · 432 Hz / 528 Hz",
+    "service-focus": "web-design-local-seo-ai-automation",
   },
 };
 
@@ -78,7 +76,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark" data-theme="dark">
       <body
-        className={`${lato.variable} ${playfair.variable}
+        className={`${sourceSans3.variable} ${sora.variable}
           font-sans antialiased flex flex-col min-h-screen
           bg-[var(--bg-base)] text-[var(--text-base)]
           overflow-x-hidden selection:bg-[var(--color-gold)] selection:text-[var(--color-midnight)]
